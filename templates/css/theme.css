@@ -1,0 +1,101 @@
+@import "ui/jquery-ui.css";
+
+.navbar-default {
+	background-color: #339b00;
+	border-color: #00b700;
+}
+.navbar-default .navbar-brand {
+	color: #f5f4ff;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #00f94d;
+}
+.navbar-default .navbar-text {
+	color: #f5f4ff;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #f5f4ff;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #00f94d;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #00f94d;
+	background-color: #00b700;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #00f94d;
+	background-color: #00b700;
+}
+.navbar-default .navbar-toggle {
+	border-color: #00b700;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: #00b700;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #f5f4ff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+	border-color: #f5f4ff;
+}
+.navbar-default .navbar-link {
+	color: #f5f4ff;
+}
+.navbar-default .navbar-link:hover {
+	color: #00f94d;
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #f5f4ff;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #00f94d;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+		color: #00f94d;
+		background-color: #00b700;
+	}
+}
+/*Login*/
+#frmLogin{
+	background: #f6f6f6;
+	border: solid #b8b8b8 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 10px;
+}
+
+#frmLogin img{
+	border: 1px solid #b8b8b8;
+}
+
+/*Pie de pagina*/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#wowza{
+	width: 100%;
+	height: 500px;
+}
+
+#conversacion{
+	height: 370px;
+	border: 1px solid #ccc;
+	padding: 12px;
+}
