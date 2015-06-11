@@ -17,7 +17,7 @@
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}jquery.dataTables.min.css" />
 			<script type="text/javascript" src="{$PAGE.ruta}js/ui/jquery-ui.js"></script>
 			
-			<link type="text/css" rel="stylesheet" href="{$PAGE.css}theme.css">
+			<link type="text/css" rel="stylesheet/less" href="{$PAGE.css}theme.less">
 			<script type="text/javascript" src="{$PAGE.ruta}js/eventos.js"></script>
 			{foreach from=$PAGE.scriptsJS item=script}
 				<script type="text/javascript" src="javascript/{$script}"></script>
@@ -47,7 +47,8 @@
 			                <li class="dropdown">
 			                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administración<b class="caret"></b></a>
 			                    <ul role="menu" class="dropdown-menu">
-			                        <li><a href="#" id="sendEventos">Eventos</a></li>
+			                        <li><a href="?mod=evento">Evento</a></li>
+			                        <li><a href="?mod=usuarios">Usuarios</a></li>
 			                    </ul>
 			                </li>
 			            {/if}
@@ -67,5 +68,6 @@
 	    <div id="modulo" class="container">
     	{include file=$PAGE.vista}
 	    </div>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
       </BODY>
 </HTML>

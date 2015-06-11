@@ -25,6 +25,10 @@ TMensaje = function(){
 			url: '?mod=mensajes',
 			success: function(data) {
 				$('#conversacion').html(data);
+				if ($("#chkScroll").prop("checked"))
+					$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
+					
+				$("#conversacion div:last-child p").css({"color": "red"});
 			}
 		});
 	};

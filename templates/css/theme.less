@@ -1,30 +1,39 @@
+@import "bootstrap/less/bootstrap.less";
 @import "ui/jquery-ui.css";
+@cara1: #F00;
+@cara2: #F2A633;
+@cara3: #FBC6FF;
+@cara4: #FFEB00;
+
+@color-letra: #FFF;
+
+@import "panel.less";
 
 .navbar-default {
-	background-color: #339b00;
-	border-color: #00b700;
+	background-color: @cara2;
+	border-color: @cara3;
 }
 .navbar-default .navbar-brand {
-	color: #f5f4ff;
+	color: @color-letra;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-	color: #00f94d;
+	color: @color-letra;
 }
 .navbar-default .navbar-text {
-	color: #f5f4ff;
+	color: @color-letra;
 }
 .navbar-default .navbar-nav > li > a {
-	color: #f5f4ff;
+	color: @color-letra;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-	color: #00f94d;
+	color: @color-letra;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #00f94d;
-	background-color: #00b700;
+	color: @cara4;
+	background: @cara2;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-	color: #00f94d;
+	color: @color-letra;
 	background-color: #00b700;
 }
 .navbar-default .navbar-toggle {
@@ -41,10 +50,10 @@
 	border-color: #f5f4ff;
 }
 .navbar-default .navbar-link {
-	color: #f5f4ff;
+	color: @color-letra;
 }
 .navbar-default .navbar-link:hover {
-	color: #00f94d;
+	color: @color-letra;
 }
 
 @media (max-width: 767px) {
@@ -59,6 +68,7 @@
 		background-color: #00b700;
 	}
 }
+
 /*Login*/
 #frmLogin{
 	background: #f6f6f6;
@@ -87,15 +97,4 @@
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
-}
-
-#wowza{
-	width: 100%;
-	height: 500px;
-}
-
-#conversacion{
-	height: 370px;
-	border: 1px solid #ccc;
-	padding: 12px;
 }

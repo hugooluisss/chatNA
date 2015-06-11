@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-06-10 12:25:18
+<?php /* Smarty version Smarty-3.1.11, created on 2015-06-11 14:58:38
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86087753755784df4f34a24-17731746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1433957116,
+      1 => 1434051771,
       2 => 'file',
     ),
   ),
@@ -50,8 +50,8 @@ jquery.dataTables.min.css" />
 			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 js/ui/jquery-ui.js"></script>
 			
-			<link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
-theme.css">
+			<link type="text/css" rel="stylesheet/less" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
+theme.less">
 			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 js/eventos.js"></script>
 			<?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
@@ -88,7 +88,8 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 			                <li class="dropdown">
 			                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administración<b class="caret"></b></a>
 			                    <ul role="menu" class="dropdown-menu">
-			                        <li><a href="#" id="sendEventos">Eventos</a></li>
+			                        <li><a href="?mod=evento">Evento</a></li>
+			                        <li><a href="?mod=usuarios">Usuarios</a></li>
 			                    </ul>
 			                </li>
 			            <?php }?>
@@ -109,5 +110,6 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
     	<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['PAGE']->value['vista'], $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	    </div>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
       </BODY>
 </HTML><?php }} ?>
