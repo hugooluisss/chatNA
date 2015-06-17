@@ -1,7 +1,7 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 	$f("wowza", "http://releases.flowplayer.org/swf/flowplayer-3.2.18.swf", {
 			autoPlay: true,
-			fullscreen: false,
+			fullscreen: true,
 			clip: {
 			provider: 'cloudfront',
 			
@@ -18,7 +18,7 @@ $(document).ready(function(){
 			},
 			controls: {
 				playlist: false,
-				fullscreen: false,
+				fullscreen: true,
 				stop: false,
 				time: false,
 				play: false,
