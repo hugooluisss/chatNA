@@ -34,5 +34,15 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("mensajes", $datos);
 	break;
+	case 'panel':
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha");
+		
+		$evento = new TEvento($rs->fields['idEvento']);
+		$objEvento = array();
+		$objEvento['nombre'] = $evento->getNombre();
+		$objEvento['descripcion'] = $evento->getDescripcion();
+		$smarty->assign("evento", $objEvento);
+	break;
 }
 ?>

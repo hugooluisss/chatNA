@@ -41,7 +41,7 @@
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="index.php">Inicio</a></li>
+	                <li {if $PAGE.modulo eq 'panel' or $PAGE.modulo eq ''}class="active"{/if}><a href="index.php?mod=panel">Inicio</a></li>
 	                {if $PAGE.sesionIniciada}
 	                	{if $PAGE.isAdmin eq true}
 			                <li class="dropdown">
@@ -52,12 +52,6 @@
 			                    </ul>
 			                </li>
 			            {/if}
-		                <li class="dropdown">
-		                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="?mod=clogin&action=getFoto" class="img-rounded"/> Mi perfil<b class="caret"></b></a>
-		                    <ul role="menu" class="dropdown-menu">
-		                        <li><a href="http://iebo.edu.mx/interno/sip-web/index.php" target="_blank">Cambiar contraseña</a></li>
-		                    </ul>
-		                </li>
 		                <li><a id="btnSalir" href="#">Salir</a></li>
 		            {/if}
 	            </ul>

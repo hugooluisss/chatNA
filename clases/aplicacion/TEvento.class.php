@@ -4,6 +4,7 @@ Class TEvento{
 	private $nombre;
 	private $descripcion;
 	private $fecha;
+	private $estado;
 	
 	public function TEvento($id = ''){
 		if ($id <> '')
@@ -48,7 +49,7 @@ Class TEvento{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("insert into evento (idEvento, nombre, descripcion, fecha) values (null, '', '', now())");
+			$rs = $db->Execute("insert into evento (idEvento, nombre, descripcion, fecha, estado) values (null, '', '', now(), 'A')");
 			$this->idEvento = $db->Insert_ID();
 		}
 		
@@ -64,7 +65,7 @@ Class TEvento{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$db->Execute("delete from evento where idEvento = ".$this->getId());
+		$db->Execute("update evento set estado = 'E' where idEvento = ".$this->getId());
 		
 		return true;
 	}

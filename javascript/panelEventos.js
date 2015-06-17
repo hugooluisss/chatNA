@@ -5,6 +5,7 @@
 $(document).ready(function(){
 	$("#btnAgregar").click(function(){
 		$('#txtNombre').val("");
+		$('#id').val("");
 		$('#txtDescripcion').val("");
 		
 		$('#winInsertarEvento').modal('show');
@@ -12,22 +13,8 @@ $(document).ready(function(){
 	});
 	
 	$("#btnGuardar").click(function(){
-		$.post(
-			'?mod=cevento&action=guardar', {
-				"nombre" : $('#txtNombre').val(), 
-				"descripcion": $('#txtDescripcion').val(),
-				"id": $("#id").val()
-			},
-			function(result){
-				if(!result.band){
-					alert(result.mensaje)
-				}else{
-					lista();
-					$('#winInsertarEvento').modal('hide');
-				}
-			},
-			"json"
-		);
+		var obj = new TEvento;
+		obj.guardar($('#id').val(), $('#txtNombre').val(), $('#txtDescripcion').val());
 	});
 	
 	lista();
@@ -39,7 +26,11 @@ function lista(){
 			url: '?mod=listaEventos',
 			success: function(data) {
 				$('#dvLista').html(data);
-				$('#tblEventos').DataTable();
+				$('#tblEventos').DataTable({
+					"language": {
+					    "url": "templates/js/tables.lang.json"
+					}
+				});
 				
 				$(".btnModificar").each(function(){
 					$(this).click(function(){
@@ -56,7 +47,8 @@ function lista(){
 				$(".btnEliminar").each(function(){
 					$(this).click(function(){
 						var el = jQuery.parseJSON($(this).attr("data"));
-						alert("hola mundo");
+						var obj = new TEvento;
+						obj.eliminar(el.idEvento);
 					});
 				});
 			}

@@ -14,12 +14,20 @@ switch($objModulo->getId()){
 				else
 					echo json_encode(array("band" => false, "mensaje" => "El evento no pudo ser creado"));
 			break;
+			case 'eliminar':
+				$obj = new TEvento($_POST['id']);
+				
+				if ($obj->eliminar())
+					echo json_encode(array("band" => true));
+				else
+					echo json_encode(array("band" => false, "mensaje" => "El evento no pudo ser eliminado"));
+			break;
 		}
 	break;
 	case 'listaEventos':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from evento order by fecha");
+		$rs = $db->Execute("select * from evento where estado = 'A' order by fecha");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
