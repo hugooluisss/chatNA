@@ -47,7 +47,7 @@
 			                <li class="dropdown">
 			                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administración<b class="caret"></b></a>
 			                    <ul role="menu" class="dropdown-menu">
-			                        <li><a href="?mod=evento">Evento</a></li>
+			                        <li><a href="?mod=eventos">Evento</a></li>
 			                        <li><a href="?mod=usuarios">Usuarios</a></li>
 			                    </ul>
 			                </li>

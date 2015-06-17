@@ -48,3 +48,23 @@ $conf['mensajes'] = array(
 	'descripcion' => 'Lista de mensajes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['eventos'] = array(
+	'vista' => 'eventos/panel.tpl',
+	'descripcion' => 'Vista del panel',
+	'seguridad' => true,
+	'js' => array('panelEventos.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['cevento'] = array(
+	'controlador' => 'evento.php',
+	'descripcion' => 'Controlador de eventos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaEventos'] = array(
+	'controlador' => 'evento.php',
+	'vista' => 'eventos/lista.tpl',
+	'descripcion' => 'Lista de eventos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);

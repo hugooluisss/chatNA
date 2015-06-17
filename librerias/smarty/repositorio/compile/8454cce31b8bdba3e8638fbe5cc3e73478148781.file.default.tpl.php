@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-06-16 17:46:34
+<?php /* Smarty version Smarty-3.1.11, created on 2015-06-16 20:11:43
          compiled from "templates\plantillas\layout\default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:177545580a74a7b9530-79218059%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8454cce31b8bdba3e8638fbe5cc3e73478148781' => 
     array (
       0 => 'templates\\plantillas\\layout\\default.tpl',
-      1 => 1434494321,
+      1 => 1434503501,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5580a74a8b1558_18379610',
   'variables' => 
   array (
     'PAGE' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5580a74a8b1558_18379610',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5580a74a8b1558_18379610')) {function content_5580a74a8b1558_18379610($_smarty_tpl) {?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
@@ -88,7 +88,7 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 			                <li class="dropdown">
 			                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administración<b class="caret"></b></a>
 			                    <ul role="menu" class="dropdown-menu">
-			                        <li><a href="?mod=evento">Evento</a></li>
+			                        <li><a href="?mod=eventos">Evento</a></li>
 			                        <li><a href="?mod=usuarios">Usuarios</a></li>
 			                    </ul>
 			                </li>

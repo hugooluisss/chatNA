@@ -74,5 +74,11 @@ Class TUsuario{
 	public function getId(){
 		return $this->idUsuario;
 	}
+	
+	public function isAdmin(){
+		if ($this->getId() == '') return false;
+		
+		return $this->idTipo == 1; 
+	}
 }
 ?>

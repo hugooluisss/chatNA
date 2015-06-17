@@ -3,7 +3,7 @@
 $ini = array();
 $ini = parse_ini_file('aplicacion.ini', true);
 
-ini_set('display_errors', '0');
+ini_set('display_errors', '1');
 
 include_once("config.php");
 define("MODULO_DEFECTO", 'inicio');
@@ -43,7 +43,7 @@ if ($objModulo->requiereSeguridad()){
 		$objModulo = new TModulo($modulo); 
 	}
 }else
-	$bandSesion = isset($sesion['num_personal']);
+	$bandSesion = isset($sesion['usuario']);
 
 define("DIR_PLANTILLAS", 'templates');
 define('TEMPLATE', DIR_PLANTILLAS.'/plantillas/');
@@ -61,6 +61,8 @@ $smarty->template_dir = TEMPLATE;
 $smarty->config_dir = CONFIG;
 $smarty->cache_dir = CACHE;
 $smarty->compile_dir = COMPILE;
+
+$objUserGeneral = new TUsuario($sesion['usuario']);
 
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
@@ -81,7 +83,7 @@ $datosPlantilla = array(
 	"rutaModulos" => TEMPLATE,
 	"modulo" => $modulo,
 	"scriptsJS" => $objModulo->getScriptsJS(),
-	"urlFotosTrabajadores" => $ini['sip']['fotos']);
+	"isAdmin" => $objUserGeneral->isAdmin());
 
 foreach($_GET as $indice => $valor){
 	$_GET[$indice] = ereg_replace('\\"', "",$_GET[$indice]);
