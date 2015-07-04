@@ -148,5 +148,14 @@ Class TUsuario{
 		
 		return true;
 	}
+	
+	public function setPosicion($lat, $lon){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("update usuario set latitud = '".$lat."', longitud = '".$lon."' where idUsuario = ".$this->getId());
+		
+		return true;
+	}
 }
 ?>

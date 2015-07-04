@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-06-16 20:11:43
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-03 19:03:18
          compiled from "templates\plantillas\layout\default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:177545580a74a7b9530-79218059%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8454cce31b8bdba3e8638fbe5cc3e73478148781' => 
     array (
       0 => 'templates\\plantillas\\layout\\default.tpl',
-      1 => 1434503501,
+      1 => 1435967863,
       2 => 'file',
     ),
   ),
@@ -82,7 +82,7 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="index.php">Inicio</a></li>
+	                <li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='panel'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']==''){?>class="active"<?php }?>><a href="index.php?mod=panel">Inicio</a></li>
 	                <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['sesionIniciada']){?>
 	                	<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['isAdmin']==true){?>
 			                <li class="dropdown">
@@ -93,12 +93,6 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 			                    </ul>
 			                </li>
 			            <?php }?>
-		                <li class="dropdown">
-		                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="?mod=clogin&action=getFoto" class="img-rounded"/> Mi perfil<b class="caret"></b></a>
-		                    <ul role="menu" class="dropdown-menu">
-		                        <li><a href="http://iebo.edu.mx/interno/sip-web/index.php" target="_blank">Cambiar contraseña</a></li>
-		                    </ul>
-		                </li>
 		                <li><a id="btnSalir" href="#">Salir</a></li>
 		            <?php }?>
 	            </ul>

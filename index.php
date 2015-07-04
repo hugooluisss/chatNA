@@ -63,7 +63,7 @@ $smarty->cache_dir = CACHE;
 $smarty->compile_dir = COMPILE;
 
 $objUserGeneral = new TUsuario($sesion['usuario']);
-
+$objUserGeneral->setAcceso();
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
 	"css" => DIR_PLANTILLAS."/css/",

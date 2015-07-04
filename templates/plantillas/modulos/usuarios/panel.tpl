@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-6">
 				<input type="checkbox" id="chkScroll" value="yes" checked="true"> <label for="chkScroll">Mostrar siempre el último mensaje</label>
-				<div class="form-group">
+				<div class="form-xgroup">
 					<label for="txtMensaje">Mensaje</label>
 					<textarea id="txtMensaje" placeholder="Escribe tu mensaje" class="form-control" autofocus="true"></textarea>
 				</div>
@@ -25,3 +25,5 @@
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="evento" name="evento" value="{$evento.id}"/>

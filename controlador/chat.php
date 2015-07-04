@@ -1,14 +1,16 @@
 <?php
 global $objModulo;
+global $objUserGeneral;
 
 switch($objModulo->getId()){
 	case 'cchat':
 		switch($objModulo->getAction()){
 			case 'push':
 				$obj = new TMensaje();
-				if ($obj->guardar($_POST['texto']))
+				if ($obj->guardar($_POST['texto'])){
+					$objUserGeneral->setPosicion($_POST['latitud'], $_POST['longitud']);
 					echo json_encode(array("band" => "true"));
-				else
+				}else
 					echo json_encode(array("band" => "false"));
 			break;
 		}
@@ -16,7 +18,7 @@ switch($objModulo->getId()){
 	case 'mensajes':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from mensaje order by hora asc;");
+		$rs = $db->Execute("select * from mensaje where idEvento = ".$_GET["evento"]." order by hora asc;");
 		$datos = array();
 		$obj = new TMensaje();
 		while(!$rs->EOF){
@@ -36,12 +38,13 @@ switch($objModulo->getId()){
 	break;
 	case 'panel':
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha");
+		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha desc");
 		
 		$evento = new TEvento($rs->fields['idEvento']);
 		$objEvento = array();
 		$objEvento['nombre'] = $evento->getNombre();
 		$objEvento['descripcion'] = $evento->getDescripcion();
+		$objEvento['id'] = $evento->getId();
 		$smarty->assign("evento", $objEvento);
 	break;
 }
