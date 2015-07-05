@@ -12,6 +12,7 @@ TMensaje = function(){
 				else{
 					$("#txtMensaje").val("");
 					$("#txtMensaje").focus();
+					self.getMensajes();
 				}
 			},
 			"json"
@@ -26,5 +27,5 @@ TMensaje = function(){
 				$('#conversacion').html(data);
 			}
 		});
-	}
+	};
 };

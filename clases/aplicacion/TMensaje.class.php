@@ -15,15 +15,15 @@ Class TMensaje{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from mensaje where idMensjae = ".$id);
-		
+		$rs = $db->Execute("select * from mensaje where idMensaje = ".$id);
+
 		foreach($rs->fields as $field => $val)
 			switch($field){
 				case 'idUsuario':
 					$this->usuario = new TUsuario($val);
 				break;
 				default:
-					$this->$fields = $val;
+					$this->$field = $val;
 				break;
 			}
 			

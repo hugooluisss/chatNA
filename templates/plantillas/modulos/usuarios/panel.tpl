@@ -4,8 +4,7 @@
 	</div>
 	<div class="col-md-4">
 		<div class="row">
-			<div class="col-md-12">
-				<div id="conversacion">&nbsp;</div>
+			<div class="col-md-12" id="conversacion">
 			</div>
 		</div>
 		<div class="row">
