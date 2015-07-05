@@ -33,7 +33,7 @@ $conf['panel'] = array(
 	'vista' => 'usuarios/panel.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
-	'js' => array('mensaje.class.js', 'panel.js'),
+	'js' => array('usuario.class.js', 'mensaje.class.js', 'panel.js'),
 	'capa' => LAYOUT_DEFECTO);
 
 $conf['cchat'] = array(

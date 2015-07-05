@@ -36,4 +36,21 @@ TUsuario = function(){
 			"json"
 		);
 	}
+	
+	this.sendUbicacion = function(){
+		if (typeof navigator.geolocation == 'object')
+			navigator.geolocation.getCurrentPosition(mostrar_ubicacion);
+		
+		function mostrar_ubicacion(p){
+			$.post(
+				'?mod=cchat&action=ubicacion', {
+					latitud: p.coords.latitude, 
+					longitud: p.coords.longitude
+				},
+				function(result){
+				},
+				"json"
+			);
+		};
+	}
 };

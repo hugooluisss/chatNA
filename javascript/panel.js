@@ -50,7 +50,10 @@
 	var obj = new TMensaje;
 	obj.getMensajes();
 	
+	var objUsuario = new TUsuario;
+	objUsuario.sendUbicacion();
+	
 	setInterval(function(){
 		obj.getMensajes();
-	}, 1000);
+	}, 3000);
 });
