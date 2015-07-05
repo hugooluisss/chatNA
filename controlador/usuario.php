@@ -24,6 +24,18 @@ switch($objModulo->getId()){
 				else
 					echo json_encode(array("band" => false, "mensaje" => "El usuario no pudo ser eliminado"));
 			break;
+			case 'ubicacion':
+				$db = TBase::conectaDB();
+				
+				$rs = $db->Execute("select * from usuario where estado = 'A' and not (latitud = '' or longitud = '') and timediff(now(), ultimoAcceso) <= '00:05:00.000000'");
+				$datos = array();
+				while(!$rs->EOF){
+					array_push($datos, $rs->fields);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 	case 'usuarios':
@@ -52,4 +64,16 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("usuarios", $datos);
 	break;
+	case 'ubicacion':
+			$db = TBase::conectaDB();
+			
+			$rs = $db->Execute("select * from usuario where estado = 'A' and not (latitud = '' or longitud = '') and timediff(now(), ultimoAcceso) <= '00:05:00.000000'");
+			$datos = array();
+			while(!$rs->EOF){
+				array_push($datos, $rs->fields);
+				$rs->moveNext();
+			}
+			
+			$smarty->assign("usuarios", $datos);
+		break;
 }

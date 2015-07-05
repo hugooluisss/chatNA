@@ -89,4 +89,12 @@ $conf['cusuario'] = array(
 	'descripcion' => 'Controlador de cuentas de usuario',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);	
+
+$conf['ubicacion'] = array(
+	'controlador' => 'usuario.php',
+	'vista' => 'usuarios/ubicacion.tpl',
+	'descripcion' => 'Ubicación de los usuarios',
+	'seguridad' => true,
+	'js' => array('ubicacion.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

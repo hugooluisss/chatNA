@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-06-17 14:04:25
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-05 01:40:50
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86087753755784df4f34a24-17731746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1434567863,
+      1 => 1436074932,
       2 => 'file',
     ),
   ),
@@ -37,32 +37,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<META name="copyright" content="">
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-js/bootstrap.js"></script>
 			<link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
 bootstrap.css">
-			
-			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-js/jquery.dataTables.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
 jquery.dataTables.min.css" />
-			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-js/ui/jquery-ui.js"></script>
-			
 			<link type="text/css" rel="stylesheet/less" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
 theme.less">
-			<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
-js/eventos.js"></script>
-			<?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['PAGE']->value['scriptsJS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['script']->key => $_smarty_tpl->tpl_vars['script']->value){
-$_smarty_tpl->tpl_vars['script']->_loop = true;
-?>
-				<script type="text/javascript" src="javascript/<?php echo $_smarty_tpl->tpl_vars['script']->value;?>
-"></script>
-			<?php } ?>
-			<script src="http://releases.flowplayer.org/js/flowplayer-3.2.13.min.js"></script>
       </HEAD>
       <BODY>
       		
@@ -90,6 +70,7 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
 			                    <ul role="menu" class="dropdown-menu">
 			                        <li><a href="?mod=eventos">Evento</a></li>
 			                        <li><a href="?mod=usuarios">Usuarios</a></li>
+			                        <li><a href="?mod=ubicacion">Conexiones activas</a></li>
 			                    </ul>
 			                </li>
 			            <?php }?>
@@ -104,6 +85,28 @@ $_smarty_tpl->tpl_vars['script']->_loop = true;
     	<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['PAGE']->value['vista'], $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	    </div>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/bootstrap.js"></script>
+		
+		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/ui/jquery-ui.js"></script>
+			
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFa9dJnYA73gbJSdoery99NTOzUgbdL3w"></script>
+	    
+	    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/eventos.js"></script>
+		<?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['PAGE']->value['scriptsJS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['script']->key => $_smarty_tpl->tpl_vars['script']->value){
+$_smarty_tpl->tpl_vars['script']->_loop = true;
+?>
+			<script type="text/javascript" src="javascript/<?php echo $_smarty_tpl->tpl_vars['script']->value;?>
+"></script>
+		<?php } ?>
+		<script src="http://releases.flowplayer.org/js/flowplayer-3.2.13.min.js"></script>
       </BODY>
 </HTML><?php }} ?>

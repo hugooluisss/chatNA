@@ -9,20 +9,9 @@
 			<META name="copyright" content="">
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-			<script type="text/javascript" src="{$PAGE.ruta}js/bootstrap.js"></script>
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}bootstrap.css">
-			
-			<script type="text/javascript" src="{$PAGE.ruta}js/jquery.dataTables.min.js"></script>
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}jquery.dataTables.min.css" />
-			<script type="text/javascript" src="{$PAGE.ruta}js/ui/jquery-ui.js"></script>
-			
 			<link type="text/css" rel="stylesheet/less" href="{$PAGE.css}theme.less">
-			<script type="text/javascript" src="{$PAGE.ruta}js/eventos.js"></script>
-			{foreach from=$PAGE.scriptsJS item=script}
-				<script type="text/javascript" src="javascript/{$script}"></script>
-			{/foreach}
-			<script src="http://releases.flowplayer.org/js/flowplayer-3.2.13.min.js"></script>
       </HEAD>
       <BODY>
       		
@@ -49,6 +38,7 @@
 			                    <ul role="menu" class="dropdown-menu">
 			                        <li><a href="?mod=eventos">Evento</a></li>
 			                        <li><a href="?mod=usuarios">Usuarios</a></li>
+			                        <li><a href="?mod=ubicacion">Conexiones activas</a></li>
 			                    </ul>
 			                </li>
 			            {/if}
@@ -62,6 +52,19 @@
 	    <div id="modulo" class="container">
     	{include file=$PAGE.vista}
 	    </div>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="{$PAGE.ruta}js/bootstrap.js"></script>
+		
+		<script type="text/javascript" src="{$PAGE.ruta}js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="{$PAGE.ruta}js/ui/jquery-ui.js"></script>
+			
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFa9dJnYA73gbJSdoery99NTOzUgbdL3w"></script>
+	    
+	    <script type="text/javascript" src="{$PAGE.ruta}js/eventos.js"></script>
+		{foreach from=$PAGE.scriptsJS item=script}
+			<script type="text/javascript" src="javascript/{$script}"></script>
+		{/foreach}
+		<script src="http://releases.flowplayer.org/js/flowplayer-3.2.13.min.js"></script>
       </BODY>
 </HTML>
