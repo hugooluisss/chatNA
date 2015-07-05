@@ -1,8 +1,10 @@
 <?php
 Class TUsuario{
 	private $idUsuario;
+	private $idTipo;
 	private $user;
 	private $pass;
+	private $email;
 	private $ultimoAcceso;
 	private $navegador;
 	private $versionNavegador;
@@ -65,14 +67,95 @@ Class TUsuario{
 		return $this->navegador;
 	}
 	
+	public function setNombre($val = ''){
+		$this->user = $val;
+		return true;
+	}
+	
 	public function getNombre(){
-		if ($this->getId() == '') return false;
-		
 		return $this->user;
 	}
 	
 	public function getId(){
 		return $this->idUsuario;
+	}
+	
+	public function isAdmin(){
+		if ($this->getId() == '') return false;
+		
+		return $this->idTipo == 1; 
+	}
+	
+	public function setTipo($val = 2){
+		$this->idTipo = $val;
+		return true;
+	}
+	
+	public function setPass($val = ''){
+		$this->pass = md5($val);
+		
+		return true;
+	}
+	
+	public function setEmail($val = ''){
+		$this->email = $val;
+		
+		return true;
+	}
+	
+	public function getEmail(){
+		return $this->email;
+	}
+	
+	public function guardar(){
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select * from usuario where user = '".$this->getNombre()."' and not estado = 'E'");
+		if (!$rs->EOF){
+			if ($rs->fields['idUsuario'] <> $this->getId())
+				return false;
+		}
+		
+		if ($this->getId() == ''){
+			$rs = $db->Execute("insert into usuario (idUsuario, idTipo, user, pass, email, estado, ultimoAcceso) values (null, 2, '', null, null, 'A', null)");
+			$this->idUsuario = $db->Insert_ID();
+		}
+		
+		$db->Execute("update usuario set
+				idTipo = '".$this->idTipo."',
+				user = '".$this->getNombre()."',
+				pass = '".$this->pass."',
+				email = '".$this->getEmail()."'
+			where idUsuario = ".$this->getId());
+			
+		return true;
+	}
+	
+	public function eliminar(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("update usuario set estado = 'E' where idUsuario = ".$this->getId());
+		
+		return true;
+	}
+	
+	public function setAcceso(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("update usuario set ultimoAcceso = now() where idUsuario = ".$this->getId());
+		
+		return true;
+	}
+	
+	public function setPosicion($lat, $lon){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$db->Execute("update usuario set latitud = '".$lat."', longitud = '".$lon."' where idUsuario = ".$this->getId());
+		
+		return true;
 	}
 }
 ?>

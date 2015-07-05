@@ -17,7 +17,7 @@
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}jquery.dataTables.min.css" />
 			<script type="text/javascript" src="{$PAGE.ruta}js/ui/jquery-ui.js"></script>
 			
-			<link type="text/css" rel="stylesheet" href="{$PAGE.css}theme.css">
+			<link type="text/css" rel="stylesheet/less" href="{$PAGE.css}theme.less">
 			<script type="text/javascript" src="{$PAGE.ruta}js/eventos.js"></script>
 			{foreach from=$PAGE.scriptsJS item=script}
 				<script type="text/javascript" src="javascript/{$script}"></script>
@@ -41,22 +41,17 @@
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="index.php">Inicio</a></li>
+	                <li {if $PAGE.modulo eq 'panel' or $PAGE.modulo eq ''}class="active"{/if}><a href="index.php?mod=panel">Inicio</a></li>
 	                {if $PAGE.sesionIniciada}
 	                	{if $PAGE.isAdmin eq true}
 			                <li class="dropdown">
 			                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administración<b class="caret"></b></a>
 			                    <ul role="menu" class="dropdown-menu">
-			                        <li><a href="#" id="sendEventos">Eventos</a></li>
+			                        <li><a href="?mod=eventos">Evento</a></li>
+			                        <li><a href="?mod=usuarios">Usuarios</a></li>
 			                    </ul>
 			                </li>
 			            {/if}
-		                <li class="dropdown">
-		                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="?mod=clogin&action=getFoto" class="img-rounded"/> Mi perfil<b class="caret"></b></a>
-		                    <ul role="menu" class="dropdown-menu">
-		                        <li><a href="http://iebo.edu.mx/interno/sip-web/index.php" target="_blank">Cambiar contraseña</a></li>
-		                    </ul>
-		                </li>
 		                <li><a id="btnSalir" href="#">Salir</a></li>
 		            {/if}
 	            </ul>
@@ -67,5 +62,6 @@
 	    <div id="modulo" class="container">
     	{include file=$PAGE.vista}
 	    </div>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
       </BODY>
 </HTML>

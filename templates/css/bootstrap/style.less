@@ -1,0 +1,192 @@
+@import "less/bootstrap.less";
+
+@linkColorNav: white;
+@backgroundImgenEncabezado: "../img/fondo_encabezado.png";
+@fontFamily: Verdana;
+
+@radioLogin: 10px;
+@login-color: #949494;
+@login-inputBackground: #554a44;
+
+@body-height: 988px;
+
+@nav-backgroundImagen: "../img/fondo_nav.png";
+@body-backgroundImagen: "../img/fondo_contenido.png";
+@body-empresa-backgroundImagen: "../img/fondo.png";
+@nav-backgroundColorActive: #554a44;
+@nav-brackgroundColor: #9e9780;
+
+@pie-backgroundColor: #554a44;
+@pie-backgroundImagen: "../img/fondo_pie.png";
+@pie-h1Color: #d96b22;
+@pie-color: #e5dfc6;
+
+.radiusLogin(@rad){
+	-moz-border-radius: @rad; /* Firefox */
+	-webkit-border-radius: @rad; /* Google Chrome y Safari */
+	border-radius: @rad;
+}
+
+.bodyAlto(@tam){
+	height: @tam;
+	overflow: hidden;
+}
+
+.background(@ruta){
+	background: url(@ruta) repeat-x top;
+}
+
+
+body {
+  font-family: @fontFamily;
+}
+
+.encabezado{
+	.background(@backgroundImgenEncabezado);
+}
+
+#frmLogin{
+	margin-top: 2px;
+	margin-bottom: 0px;
+	height: 30px;
+	background: #d2d1d0;
+	.radiusLogin(@radioLogin);
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 0px;
+	margin-right: 0px;
+	color: @login-color;
+	font-size: 13px;
+	width: 100%;
+	vertical-align: middle;
+}
+
+#frmLogin input{
+	width: 50%;
+	margin: 0 0 0 0;
+	.radiusLogin(@radioLogin);
+	border-style: none;
+	height: 30px;
+	background: @login-inputBackground;
+	text-align: center;
+	float: left;
+}
+
+#frmLogin button{
+	border: none;
+	background: none;
+	margin-right: 0px;
+	width: 10%;
+	float: left;
+	height: 30px;
+}
+
+#frmLogin Label{
+	font-weight: normal;
+	width: 40%;
+	float: left;
+	height: 30px;
+	text-align: right;
+	padding-right: 10px;
+	padding-top: 5px;
+}
+
+#navegador{
+	.background(@nav-backgroundImagen);
+	height: 42px;
+	margin-top: 3px;
+}
+
+.cuerpo{
+	.background(@body-backgroundImagen);
+	padding-top: 4px;
+	.bodyAlto(@body-height);
+}
+
+.fondo-empresa{
+	background: url(@body-empresa-backgroundImagen) no-repeat center top scroll;
+}
+
+
+/* navbar */
+.navbar-default {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: @linkColorNav;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: @linkColorNav;
+}
+/* link */
+.navbar-default .nav-pills > li > a {
+    color: @linkColorNav;
+    font-weight: normal;
+    width: auto;
+}
+.navbar-default .nav-pills > li > a:hover,
+.navbar-default .nav-pills > li > a:focus {
+    color: @linkColorNav;
+    border-radius: inherit;
+    background-color: @nav-backgroundColorActive;
+}
+.navbar-default .nav-pills > .active > a, 
+.navbar-default .nav-pills > .active > a:hover, 
+.navbar-default .nav-pills > .active > a:focus {
+    background-color: @nav-backgroundColorActive;
+    border-radius: inherit;
+    font-weight: normal;
+}
+.navbar-default .nav-pills > .open > a, 
+.navbar-default .nav-pills > .open > a:hover, 
+.navbar-default .nav-pills > .open > a:focus {
+    color: @linkColorNav;
+    background-color: @nav-backgroundColorActive;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border: none;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: none;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: none;
+    color: white;
+}
+
+.pie{
+	color: @pie-color;
+	font-size: 10px;
+	.background(@body-backgroundImagen);
+}
+
+.pie .row{
+	background: @pie-backgroundColor url(@pie-backgroundImagen) no-repeat right top;
+	padding-top: 40px;
+}
+
+.pie H1{
+	color: @pie-h1Color;
+	font-size: 14px;
+}

@@ -29,7 +29,7 @@ $conf['clogin'] = array(
 
 #Login chat
 $conf['panel'] = array(
-	#'controlador' => 'index.php',
+	'controlador' => 'chat.php',
 	'vista' => 'usuarios/panel.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
@@ -48,3 +48,45 @@ $conf['mensajes'] = array(
 	'descripcion' => 'Lista de mensajes',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['eventos'] = array(
+	'vista' => 'eventos/panel.tpl',
+	'descripcion' => 'Vista del panel',
+	'seguridad' => true,
+	'js' => array('evento.class.js', 'panelEventos.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['cevento'] = array(
+	'controlador' => 'evento.php',
+	'descripcion' => 'Controlador de eventos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaEventos'] = array(
+	'controlador' => 'evento.php',
+	'vista' => 'eventos/lista.tpl',
+	'descripcion' => 'Lista de eventos',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['usuarios'] = array(
+	'controlador' => 'usuario.php',
+	'vista' => 'usuarios/panelAdmon.tpl',
+	'descripcion' => 'Vista del panel de usuarios',
+	'seguridad' => true,
+	'js' => array('usuario.class.js', 'panelUsuarios.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listaUsuarios'] = array(
+	'controlador' => 'usuario.php',
+	'vista' => 'usuarios/lista.tpl',
+	'descripcion' => 'Lista de usuarios',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cusuario'] = array(
+	'controlador' => 'usuario.php',
+	'descripcion' => 'Controlador de cuentas de usuario',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);	
+?>

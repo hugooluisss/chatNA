@@ -35,7 +35,9 @@ Class TMensaje{
 		if ($mensaje == '' or $sesion['usuario'] == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("insert into mensaje (idMensaje, idUsuario, hora, texto) values (null, ".$sesion['usuario'].", now(), '".$mensaje."')");
+		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha");
+		if ($rs->EOF) return false;
+		$rs = $db->Execute("insert into mensaje (idMensaje, idEvento, idUsuario, hora, texto) values (null, ".$rs->fields['idEvento'].", ".$sesion['usuario'].", now(), '".$mensaje."')");
 		if ($rs) return true;
 		
 		return false;

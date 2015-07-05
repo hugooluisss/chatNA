@@ -5,7 +5,7 @@ switch($objModulo->getAction()){
 	case 'iniciar': case 'validarCredenciales':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select idUsuario, pass from usuario where upper(user) = upper('".$_POST['usuario']."')");
+		$rs = $db->Execute("select idUsuario, pass from usuario where upper(user) = upper('".$_POST['usuario']."') and estado = 'A'");
 		
 		$result = array('band' => false, 'mensaje' => 'Error al consultar los datos');
 		if($rs->EOF)
@@ -21,6 +21,8 @@ switch($objModulo->getAction()){
 			$sesion['navegador'] = 			$obj->getNavegador();
 			$sesion['sistemaOperativo'] = 	$obj->getSistemaOperativo();
 			$_SESSION[SISTEMA] = $sesion;
+			
+			$obj->setAcceso();
 		}
 		
 		echo json_encode($result);

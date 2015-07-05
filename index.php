@@ -43,7 +43,7 @@ if ($objModulo->requiereSeguridad()){
 		$objModulo = new TModulo($modulo); 
 	}
 }else
-	$bandSesion = isset($sesion['num_personal']);
+	$bandSesion = isset($sesion['usuario']);
 
 define("DIR_PLANTILLAS", 'templates');
 define('TEMPLATE', DIR_PLANTILLAS.'/plantillas/');
@@ -62,6 +62,8 @@ $smarty->config_dir = CONFIG;
 $smarty->cache_dir = CACHE;
 $smarty->compile_dir = COMPILE;
 
+$objUserGeneral = new TUsuario($sesion['usuario']);
+$objUserGeneral->setAcceso();
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
 	"css" => DIR_PLANTILLAS."/css/",
@@ -81,7 +83,7 @@ $datosPlantilla = array(
 	"rutaModulos" => TEMPLATE,
 	"modulo" => $modulo,
 	"scriptsJS" => $objModulo->getScriptsJS(),
-	"urlFotosTrabajadores" => $ini['sip']['fotos']);
+	"isAdmin" => $objUserGeneral->isAdmin());
 
 foreach($_GET as $indice => $valor){
 	$_GET[$indice] = ereg_replace('\\"', "",$_GET[$indice]);
