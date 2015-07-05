@@ -18,13 +18,12 @@ switch($objModulo->getId()){
 		
 		$rs = $db->Execute("select * from mensaje order by hora asc;");
 		$datos = array();
-		$obj = new TMensaje();
 		while(!$rs->EOF){
-			$obj->setId($rs->fields['idMensaje']);
+			$obj = new TMensaje($rs->fields['idMensaje']);
 			
 			$el = array();
 			$el["texto"] = $obj->getTexto();
-			$el["hora"] = $obj->getHora();
+			$el["hora"] = $obj->hora();
 			$el["from"] = $obj->usuario->getNombre();
 			
 			array_push($datos, $el);

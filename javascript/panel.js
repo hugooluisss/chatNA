@@ -39,18 +39,6 @@ $(document).ready(function(){
 		obj.enviar($("#txtMensaje").val());
 	});
 	
-	$("#txtMensaje").keypress(function(e){
-		if(e.which == 13) {
-			var obj = new TMensaje;
-		
-			obj.enviar($("#txtMensaje").val());
-		}
-	});
-	
 	var obj = new TMensaje;
 	obj.getMensajes();
-	
-	setInterval(function(){
-		obj.getMensajes();
-	}, 1000);
 });
