@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-03 19:16:36
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-06 15:23:50
          compiled from "templates\plantillas\modulos\usuarios\panelAdmon.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15997559725e4a91193-65000378%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd8a5f16283cd8dae6f26c3f9e6d29d769e2d9a41' => 
     array (
       0 => 'templates\\plantillas\\modulos\\usuarios\\panelAdmon.tpl',
-      1 => 1435967863,
+      1 => 1436214149,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_559725e4bf6881_80508376',
   'variables' => 
   array (
     'tipos' => 0,
     'tipo' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_559725e4bf6881_80508376',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_559725e4bf6881_80508376')) {function content_559725e4bf6881_80508376($_smarty_tpl) {?><h2>Administración de usuarios</h2>
 <div class="modal fade" id="winInsertar">
@@ -86,6 +86,7 @@ $_smarty_tpl->tpl_vars['tipo']->_loop = true;
 <div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" id="btnAgregar">Agregar</button>
+		<button type="button" class="btn btn-default" id="btnJoomlaUsers">Agregar desde Joomla</button>
 	</div>
 </div>
 <br />

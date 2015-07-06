@@ -91,8 +91,8 @@ Class TUsuario{
 		return true;
 	}
 	
-	public function setPass($val = ''){
-		$this->pass = md5($val);
+	public function setPass($val = '', $encriptado = false){
+		$this->pass = $encriptado?$val:md5($val);
 		
 		return true;
 	}

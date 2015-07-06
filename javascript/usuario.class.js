@@ -52,5 +52,14 @@ TUsuario = function(){
 				"json"
 			);
 		};
+	};
+	
+	this.getUsersJoomla = function(){
+		$.post(
+				'?mod=cusuario&action=usuariosJoomla', {},
+				function(result){
+				},
+				"json"
+			);
 	}
 };

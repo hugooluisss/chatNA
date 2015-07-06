@@ -54,6 +54,7 @@
 <div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" id="btnAgregar">Agregar</button>
+		<button type="button" class="btn btn-default" id="btnJoomlaUsers">Agregar desde Joomla</button>
 	</div>
 </div>
 <br />

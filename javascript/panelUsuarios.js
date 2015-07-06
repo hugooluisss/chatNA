@@ -15,6 +15,13 @@ $(document).ready(function(){
 		
 	});
 	
+	$("#btnJoomlaUsers").click(function(){
+		if(confirm("¿Esto igualará a todos los usuarios con respecto a los de joomla, estas seguro?")){
+			var obj = new TUsuario();
+			obj.getUsersJoomla();
+		}
+	});
+	
 	lista();
 });
 

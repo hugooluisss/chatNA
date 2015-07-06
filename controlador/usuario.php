@@ -36,6 +36,30 @@ switch($objModulo->getId()){
 				
 				echo json_encode($datos);
 			break;
+			case 'usuariosJoomla':
+				 global $ini;
+				 $db = TBase::conectaDB("na");
+				 
+				 $rs = $db->Execute("select id, name, username, email, password from ".$ini['na']['prefijo']."users");
+				 
+				 $db = TBase::conectaDB();
+				 $datos = array();
+				 $obj = new TUsuario;
+				 while(!$rs->EOF){
+				 	$rsU = $db->Execute("select idUsuario from usuario where idUsuario = ".$rs->fields['id']);
+					$obj = new TUsuario($rsU->fields['idUsuario']);
+					
+					$obj->setNombre($rs->fields['username']);
+					$obj->setTipo(2);
+					$obj->setPass("oaxaca.1986");
+					$obj->setEmail($rs->fields['email']);
+					$obj->guardar(); 
+				 	array_push($datos, $rs->fields);
+				 	$rs->moveNext();
+				 }
+				 
+				 echo json_encode($datos);
+			break;
 		}
 	break;
 	case 'usuarios':
