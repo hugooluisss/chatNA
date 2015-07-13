@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-06-16 21:26:59
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-13 15:01:06
          compiled from "templates\plantillas\modulos\eventos\lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:203445580d89e9bd6b5-97491904%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56e819877708d25eda58ba34175f603f6801d4ec' => 
     array (
       0 => 'templates\\plantillas\\modulos\\eventos\\lista.tpl',
-      1 => 1434508015,
+      1 => 1436817664,
       2 => 'file',
     ),
   ),
@@ -48,6 +48,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 					<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
 					<td>
+						<?php if ($_smarty_tpl->tpl_vars['row']->value['estado']=='A'){?>
 						<div class="btn-group">
 							<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-info" data-toggle="dropdown">
 								Acciones
@@ -58,8 +59,11 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 '>Modificar</a></li>
 								<li><a href="#" class="btnEliminar" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>Eliminar</a></li>
+								<li><a href="#" class="btnMensajes" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'>Mensajes</a></li>
 							</ul>
 						</div>
+						<?php }?>
 					</td>
 				</tr>
 			<?php } ?>

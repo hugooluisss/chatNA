@@ -27,7 +27,7 @@ switch($objModulo->getId()){
 	case 'listaEventos':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from evento where estado = 'A' order by fecha");
+		$rs = $db->Execute("select * from evento order by fecha desc");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -36,6 +36,11 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("eventos", $datos);
+	break;
+	case 'panelMsgAdmon':
+		$db = TBase::conectaDB();
+
+		$smarty->assign("evento", new TEvento($_GET['id'])); 
 	break;
 }
 ?>

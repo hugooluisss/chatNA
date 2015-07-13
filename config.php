@@ -93,8 +93,16 @@ $conf['cusuario'] = array(
 $conf['ubicacion'] = array(
 	'controlador' => 'usuario.php',
 	'vista' => 'usuarios/ubicacion.tpl',
-	'descripcion' => 'Ubicación de los usuarios',
+	'descripcion' => 'UbicaciÃ³n de los usuarios',
 	'seguridad' => true,
 	'js' => array('ubicacion.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['panelMsgAdmon'] = array(
+	'controlador' => 'evento.php',
+	'vista' => 'eventos/mensajesAdmon.tpl',
+	'descripcion' => 'Lista de mensajes presentados al administrador',
+	'seguridad' => true,
+	'js' => array('mensaje.class.js', 'mensajesAdmon.js'),
 	'capa' => LAYOUT_DEFECTO);
 ?>

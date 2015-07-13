@@ -19,17 +19,20 @@ TMensaje = function(){
 		);
 	};
 	
-	this.getMensajes = function(){
+	this.getMensajes = function(id, fn){
 		$.ajax({
 			type: "GET",
 			url: '?mod=mensajes',
-			data: {evento: $("#evento").val()},
+			data: {evento: id == undefined?$("#evento").val():id},
 			success: function(data) {
 				$('#conversacion').html(data);
 				if ($("#chkScroll").prop("checked"))
 					$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
 					
 				$("#conversacion div:last-child p").css({"color": "red"});
+				
+				if (fn != undefined)
+				   fn.post();
 			}
 		});
 	};

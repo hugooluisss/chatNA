@@ -1,4 +1,4 @@
-﻿$(document).ready(function(){
+$(document).ready(function(){
 	$f("wowza", "http://releases.flowplayer.org/swf/flowplayer-3.2.18.swf", {
 			autoPlay: true,
 			fullscreen: true,

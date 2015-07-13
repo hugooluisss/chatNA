@@ -26,11 +26,14 @@ function lista(){
 			url: '?mod=listaEventos',
 			success: function(data) {
 				$('#dvLista').html(data);
-				$('#tblEventos').DataTable({
+				var table = $('#tblEventos').DataTable({
 					"language": {
+						"ordering": false,
 					    "url": "templates/js/tables.lang.json"
 					}
 				});
+				
+				table.order( 3, 'desc').draw();
 				
 				$(".btnModificar").each(function(){
 					$(this).click(function(){
@@ -49,6 +52,13 @@ function lista(){
 						var el = jQuery.parseJSON($(this).attr("data"));
 						var obj = new TEvento;
 						obj.eliminar(el.idEvento);
+					});
+				});
+				
+				$(".btnMensajes").each(function(){
+					$(this).click(function(){
+						var el = jQuery.parseJSON($(this).attr("data"));
+						window.location="?mod=panelMsgAdmon&id=" + el.idEvento;
 					});
 				});
 			}

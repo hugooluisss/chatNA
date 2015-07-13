@@ -31,9 +31,10 @@ switch($objModulo->getId()){
 			
 			$el = array();
 			$el["texto"] = $obj->getTexto();
+			$el["idMensaje"] = $rs->fields['idMensaje'];
 			$el["hora"] = $obj->getHora();
 			$el["from"] = $obj->usuario->getNombre();
-			
+			$el["json"] = json_encode($el);
 			array_push($datos, $el);
 			
 			$rs->moveNext();
