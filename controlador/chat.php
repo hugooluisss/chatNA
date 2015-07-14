@@ -18,6 +18,13 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => "true"));
 			break;
+			case 'sendCoordinador':
+				$obj = new TMensaje($_POST['id']);
+				if ($obj->showCoordinador())	
+					echo json_encode(array("band" => "true"));
+				else
+					echo json_encode(array("band" => "false"));
+			break;
 		}
 	break;
 	case 'mensajes':
@@ -34,6 +41,7 @@ switch($objModulo->getId()){
 			$el["idMensaje"] = $rs->fields['idMensaje'];
 			$el["hora"] = $obj->getHora();
 			$el["from"] = $obj->usuario->getNombre();
+			$el["coordinador"] = $obj->isShowCoordinador();
 			$el["json"] = json_encode($el);
 			array_push($datos, $el);
 			

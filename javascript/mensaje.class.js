@@ -36,4 +36,20 @@ TMensaje = function(){
 			}
 		});
 	};
+	
+	this.enviarCoordinador = function(id, fn){
+		$.post(
+			'?mod=cchat&action=sendCoordinador', {
+				"id" : id
+			},
+			function(result){
+				if(result.band == "false")
+					alert("Upps, ocurrio un error al enviar el mensaje al coordinador");
+				else if (fn != undefined)
+					fn.ok();
+				
+			},
+			"json"
+		);				   
+	}
 };

@@ -4,6 +4,7 @@ Class TMensaje{
 	public $usuario;
 	private $hora;
 	private $texto;
+	private $coordinador;
 	
 	public function TMensaje($id = ''){
 		if ($id == '') return false;
@@ -30,6 +31,10 @@ Class TMensaje{
 		return true;
 	}
 	
+	public function getId(){
+		   return $this->idMensaje;
+	}
+	
 	public function guardar($mensaje = ''){
 		global $sesion;
 		if ($mensaje == '' or $sesion['usuario'] == '') return false;
@@ -49,6 +54,18 @@ Class TMensaje{
 	
 	public function getHora(){
 		return $this->hora;
+	}
+	
+	public function showCoordinador(){
+		$db = TBase::conectaDB();
+		
+		return $db->Execute("update mensaje set coordinador = 'S' where idMensaje = ".$this->getId())?true:false;
+	}
+	
+	public function isShowCoordinador(){
+		if ($this->getId() == '') return false;
+		
+		return $this->coordinador == 'S';
 	}
 }
 ?>
