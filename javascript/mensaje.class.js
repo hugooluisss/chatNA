@@ -1,7 +1,7 @@
 TMensaje = function(){
 	var self = this;
 	
-	this.enviar = function(mensaje){
+	this.enviar = function(mensaje, fn){
 		$.post(
 			'?mod=cchat&action=push', {
 				"texto" : mensaje
@@ -9,11 +9,9 @@ TMensaje = function(){
 			function(result){
 				if(result.band == "false")
 					alert("Upps, ocurrio un error al enviar tu mensaje, verifica que tu conexión a internet se encuentre activa");
-				else{
-					$("#txtMensaje").val("");
-					$("#txtMensaje").focus();
-					self.getMensajes();
-				}
+					
+				if (fn != undefined)
+					fn.post(result);
 			},
 			"json"
 		);
@@ -25,14 +23,8 @@ TMensaje = function(){
 			url: '?mod=mensajes',
 			data: {evento: id == undefined?$("#evento").val():id},
 			success: function(data) {
-				$('#conversacion').html(data);
-				if ($("#chkScroll").prop("checked"))
-					$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
-					
-				$("#conversacion div:last-child p").css({"color": "red"});
-				
 				if (fn != undefined)
-				   fn.post();
+				   fn.post(data);
 			}
 		});
 	};

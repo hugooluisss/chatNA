@@ -1,8 +1,9 @@
 $(document).ready(function(){
 	var objMsg = new TMensaje;
 	function getMSG(){
-		objMsg.getMensajes($("#id").val(), {post: function(){
-    		$("#conversacion .well").each(function(){
+		objMsg.getMensajes($("#id").val(), {post: function(data){
+			$("#conversacionAdmon").html(data);
+    		$("#conversacionAdmon .well").each(function(){
     			var el = jQuery.parseJSON($(this).attr("obj"));
     			$(this).addClass("mensajeActivo");
     			
@@ -21,6 +22,9 @@ $(document).ready(function(){
     			}else
 					$(this).prepend('<span class="label label-success">Mostrado al coordinador</span><br /> <br />');
     		});
+    		
+    		if ($("#chkScroll").prop("checked"))
+				$("#conversacionAdmon").scrollTop($("#conversacionAdmon").prop("scrollHeight"));
 		}});
 	}
 	

@@ -10,8 +10,23 @@
 	overflow-y: scroll;
 }
 
-#conversacion p{
+#conversacionAdmon{
+  height: 450px;
+  padding: 12px;
+  overflow-y: scroll;
+}
+
+#conversacion p, #conversacionAdmon p{
 	font-weight: bold;
+}
+
+.mensajeActivo-less{
+  background: @cara3;
+  cursor: pointer;
+}
+
+.mensajeActivo:hover{
+  .mensajeActivo-less;
 }
 
 @media (max-width: @screen-xs-max){

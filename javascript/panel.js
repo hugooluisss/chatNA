@@ -43,17 +43,36 @@ $(document).ready(function(){
 		if(e.which == 13) {
 			var obj = new TMensaje;
 		
-			obj.enviar($("#txtMensaje").val());
+			obj.enviar($("#txtMensaje").val(), {post: function (result){
+					if (result.band == "true"){
+						$("#txtMensaje").val("");
+						$("#txtMensaje").focus();
+						obj.getMensajes(undefined, {post: mostrarMensages});
+					}
+				}
+			});
 		}
 	});
 	
 	var obj = new TMensaje;
-	obj.getMensajes();
+	obj.getMensajes(undefined, {
+		post: mostrarMensages
+	});
+	
+	function mostrarMensages(data){
+		$('#conversacion').html(data);
+		if ($("#chkScroll").prop("checked"))
+			$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
+				
+		$("#conversacion div:last-child p").css({"color": "red"});
+	}
 	
 	var objUsuario = new TUsuario;
 	objUsuario.sendUbicacion();
 	
 	setInterval(function(){
-		obj.getMensajes();
+		obj.getMensajes(undefined, {
+			post: mostrarMensages
+		});
 	}, 3000);
 });

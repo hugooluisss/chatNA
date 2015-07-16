@@ -10,7 +10,7 @@ TEvento = function(){
 			},
 			function(result){
 				if(!result.band){
-					alert(result.mensaje)
+					alert(result.mensaje);
 				}else{
 					lista();
 					$('#winInsertarEvento').modal('hide');

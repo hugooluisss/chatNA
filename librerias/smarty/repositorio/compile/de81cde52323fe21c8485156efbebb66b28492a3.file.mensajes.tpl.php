@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-14 14:35:03
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-16 17:45:30
          compiled from "templates\plantillas\modulos\usuarios\mensajes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:43235580a7aeec3bc1-15082022%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'de81cde52323fe21c8485156efbebb66b28492a3' => 
     array (
       0 => 'templates\\plantillas\\modulos\\usuarios\\mensajes.tpl',
-      1 => 1436902421,
+      1 => 1437086728,
       2 => 'file',
     ),
   ),
@@ -29,7 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->key => $_smarty_tpl->tpl_vars['row']->value){
 $_smarty_tpl->tpl_vars['row']->_loop = true;
 ?>
-	<div class="well well-lg mensajeActivo" obj='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+	<div class="well well-sm mensajeActivo" obj='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>
 	<p><?php echo $_smarty_tpl->tpl_vars['row']->value['from'];?>
  dijo el <span class="label label-warning"><?php echo $_smarty_tpl->tpl_vars['row']->value['hora'];?>
