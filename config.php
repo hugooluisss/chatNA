@@ -98,11 +98,18 @@ $conf['ubicacion'] = array(
 	'js' => array('ubicacion.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
-$conf['panelMsgAdmon'] = array(
+$conf['panelAdmonEvento'] = array(
 	'controlador' => 'evento.php',
-	'vista' => 'eventos/mensajesAdmon.tpl',
+	'vista' => 'eventos/admon.tpl',
 	'descripcion' => 'Lista de mensajes presentados al administrador',
 	'seguridad' => true,
-	'js' => array('mensaje.class.js', 'mensajesAdmon.js'),
+	'js' => array('usuario.class.js', 'mensaje.class.js', 'admonEvento.js'),
 	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listaConectados'] = array(
+	'controlador' => 'evento.php',
+	'vista' => 'eventos/conectados.tpl',
+	'descripcion' => 'Lista de usuarios conectados',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

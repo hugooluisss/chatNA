@@ -37,10 +37,22 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("eventos", $datos);
 	break;
-	case 'panelMsgAdmon':
+	case 'panelAdmonEvento':
 		$db = TBase::conectaDB();
 
 		$smarty->assign("evento", new TEvento($_GET['id'])); 
+	break;
+	case 'listaConectados':
+		$db = TBase::conectaDB();
+			
+		$rs = $db->Execute("select idUsuario from usuario where estado = 'A' order by ultimoAcceso desc");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, new TUsuario($rs->fields['idUsuario']));
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("usuarios", $datos);
 	break;
 }
 ?>

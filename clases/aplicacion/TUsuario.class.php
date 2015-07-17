@@ -157,5 +157,8 @@ Class TUsuario{
 		
 		return true;
 	}
+	public function getUltimoAcceso(){
+		return $this->getId() == ""?'':$this->ultimoAcceso;
+	}
 }
 ?>

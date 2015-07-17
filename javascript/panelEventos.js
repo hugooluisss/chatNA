@@ -55,10 +55,10 @@ function lista(){
 					});
 				});
 				
-				$(".btnMensajes").each(function(){
+				$(".btnAdmonEvento").each(function(){
 					$(this).click(function(){
 						var el = jQuery.parseJSON($(this).attr("data"));
-						window.location="?mod=panelMsgAdmon&id=" + el.idEvento;
+						window.location="?mod=panelAdmonEvento&id=" + el.idEvento;
 					});
 				});
 			}

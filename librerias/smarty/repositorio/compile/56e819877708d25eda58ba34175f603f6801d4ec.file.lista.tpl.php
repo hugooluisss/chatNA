@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-13 15:01:06
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-16 20:13:32
          compiled from "templates\plantillas\modulos\eventos\lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:203445580d89e9bd6b5-97491904%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56e819877708d25eda58ba34175f603f6801d4ec' => 
     array (
       0 => 'templates\\plantillas\\modulos\\eventos\\lista.tpl',
-      1 => 1436817664,
+      1 => 1437095489,
       2 => 'file',
     ),
   ),
@@ -59,8 +59,8 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 '>Modificar</a></li>
 								<li><a href="#" class="btnEliminar" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>Eliminar</a></li>
-								<li><a href="#" class="btnMensajes" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'>Mensajes</a></li>
+								<li><a href="#" class="btnAdmonEvento" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'>Panel de administración</a></li>
 							</ul>
 						</div>
 						<?php }?>

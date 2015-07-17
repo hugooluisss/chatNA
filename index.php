@@ -3,7 +3,9 @@
 $ini = array();
 $ini = parse_ini_file('aplicacion.ini', true);
 if ($ini['sistema']['debug'] == 'off')
-   ini_set('display_errors', '0');
+	ini_set('display_errors', '0');
+else 
+	ini_set('display_errors', '1');
 
 include_once("config.php");
 define("MODULO_DEFECTO", 'inicio');

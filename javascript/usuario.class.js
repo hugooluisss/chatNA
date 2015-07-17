@@ -61,5 +61,16 @@ TUsuario = function(){
 				},
 				"json"
 			);
-	}
+	};
+	
+	this.getConectados = function(fn){
+		$.ajax({
+			type: "GET",
+			url: '?mod=listaConectados',
+			success: function(data) {
+				if (fn != undefined)
+				   fn.post(data);
+			}
+		});
+	};
 };

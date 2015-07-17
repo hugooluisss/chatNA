@@ -33,4 +33,19 @@ $(document).ready(function(){
 	setInterval(function(){
 		getMSG();
 	}, 3000);
+	
+	var objUser = new TUsuario;
+	function getConectados(){
+		objUser.getConectados({
+			post: function(data){
+				$("#conectados").html(data);
+			}
+		});
+	}
+	
+	getConectados();
+	/*Usuarios conectados*/
+	setInterval(function(){
+		getConectados();
+	}, 1000 * 60);
 });
