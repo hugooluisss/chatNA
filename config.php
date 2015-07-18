@@ -28,6 +28,12 @@ $conf['clogin'] = array(
 	
 
 #Login chat
+$conf['setPantallaInicio'] = array(
+	'controlador' => 'usuario.php',
+	'descripcion' => 'Discriminación de pantalla inicial',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
 $conf['panel'] = array(
 	'controlador' => 'chat.php',
 	'vista' => 'usuarios/panel.tpl',
@@ -112,4 +118,12 @@ $conf['listaConectados'] = array(
 	'descripcion' => 'Lista de usuarios conectados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+
+$conf['coordinador'] = array(
+	'controlador' => 'chat.php',
+	'vista' => 'usuarios/coordinador.tpl',
+	'descripcion' => 'Lista de mensajes presentados al administrador',
+	'seguridad' => true,
+	'js' => array('mensaje.class.js', 'coordinador.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

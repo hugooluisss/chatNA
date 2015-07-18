@@ -89,15 +89,32 @@ switch($objModulo->getId()){
 		$smarty->assign("usuarios", $datos);
 	break;
 	case 'ubicacion':
-			$db = TBase::conectaDB();
-			
-			$rs = $db->Execute("select * from usuario where estado = 'A' and not (latitud = '' or longitud = '') and timediff(now(), ultimoAcceso) <= '00:05:00.000000'");
-			$datos = array();
-			while(!$rs->EOF){
-				array_push($datos, $rs->fields);
-				$rs->moveNext();
-			}
-			
-			$smarty->assign("usuarios", $datos);
-		break;
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select * from usuario where estado = 'A' and not (latitud = '' or longitud = '') and timediff(now(), ultimoAcceso) <= '00:05:00.000000'");
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("usuarios", $datos);
+	break;
+	case 'setPantallaInicio':
+		global $sesion;
+		
+		$obj = new TUsuario($sesion['usuario']);
+		
+		switch($obj->getTipo()){
+			case 1:
+				header('Location: ?mod=eventos');
+			break;
+			case 2:
+				header('Location: ?mod=panel');
+			break;
+			case 3:
+				header('Location: ?mod=coordinador');
+			break;
+		}
+	break;
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-16 20:57:37
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-17 18:24:07
          compiled from "templates\plantillas\modulos\eventos\conectados.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:186055a85ad474b888-20142715%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc092832d3e85998069718dd664b71b50d4f5960' => 
     array (
       0 => 'templates\\plantillas\\modulos\\eventos\\conectados.tpl',
-      1 => 1437098256,
+      1 => 1437175445,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 		<li class="list-group-item">
 			<h4 class="list-group-item-heading"><?php echo $_smarty_tpl->tpl_vars['row']->value->getNombre();?>
 </h4>
-			<p class="list-group-item-text"><small></small><?php echo (($tmp = @$_smarty_tpl->tpl_vars['row']->value->getUltimoAcceso())===null||$tmp==='' ? "nunca" : $tmp);?>
+			<p class="list-group-item-text"><small><?php echo (($tmp = @$_smarty_tpl->tpl_vars['row']->value->getUltimoAcceso())===null||$tmp==='' ? "nunca" : $tmp);?>
 </small></p>
 		</li>
 	<?php } ?>

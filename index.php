@@ -9,13 +9,13 @@ else
 
 include_once("config.php");
 define("MODULO_DEFECTO", 'inicio');
-define("MODULO_SESION_INICIADA", 'panelPrincipal');
+define("MODULO_SESION_INICIADA", 'setPantallaInicio');
 define("SISTEMA", $ini['sistema']['nombreAplicacion']);
 
 session_start();
 session_name(SISTEMA);
 $sesion = $_SESSION[SISTEMA];
-$modulo = $_GET['mod'] == ''?(isset($sesion['num_personal'])?MODULO_SESION_INICIADA:MODULO_DEFECTO):$_GET['mod'];
+$modulo = $_GET['mod'] == ''?(isset($sesion['usuario'])?MODULO_SESION_INICIADA:MODULO_DEFECTO):$_GET['mod'];
 
 header('Content-Type: text/html; charset=UTF-8');
 setlocale(LC_CTYPE, "es_ES");

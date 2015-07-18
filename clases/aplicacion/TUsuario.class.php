@@ -91,6 +91,10 @@ Class TUsuario{
 		return true;
 	}
 	
+	public function getTipo(){
+		return $this->idTipo;
+	}
+	
 	public function setPass($val = '', $encriptado = false){
 		$this->pass = $encriptado?$val:md5($val);
 		

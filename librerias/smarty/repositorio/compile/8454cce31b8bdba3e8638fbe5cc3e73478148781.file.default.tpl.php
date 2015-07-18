@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-06 14:44:10
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-17 18:37:19
          compiled from "templates\plantillas\layout\default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:177545580a74a7b9530-79218059%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8454cce31b8bdba3e8638fbe5cc3e73478148781' => 
     array (
       0 => 'templates\\plantillas\\layout\\default.tpl',
-      1 => 1436211842,
+      1 => 1437176236,
       2 => 'file',
     ),
   ),
@@ -62,7 +62,7 @@ theme.less">
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='panel'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']==''){?>class="active"<?php }?>><a href="index.php?mod=panel">Inicio</a></li>
+	                <li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='panel'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']==''){?>class="active"<?php }?>><a href="index.php?mod=setPantallaInicio">Inicio</a></li>
 	                <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['sesionIniciada']){?>
 	                	<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['isAdmin']==true){?>
 			                <li class="dropdown">

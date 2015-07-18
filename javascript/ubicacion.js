@@ -8,8 +8,10 @@ $(document).ready(function(){
 		}
 	});
 
-	
-	navigator.geolocation.getCurrentPosition(initialize);
+	if (navigator.geolocation)
+		navigator.geolocation.watchPosition(initialize);
+	else
+		alert("No se pudieron obtener los datos de tu localización, no se puede continuar");
 	
 	function initialize(pos) {
 		var mapOptions = {

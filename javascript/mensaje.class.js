@@ -17,11 +17,11 @@ TMensaje = function(){
 		);
 	};
 	
-	this.getMensajes = function(id, fn){
+	this.getMensajes = function(id, fn, coordinador){
 		$.ajax({
 			type: "GET",
 			url: '?mod=mensajes',
-			data: {evento: id == undefined?$("#evento").val():id},
+			data: {evento: id == undefined?$("#evento").val():id, "coordinador": coordinador?'s':'n'},
 			success: function(data) {
 				if (fn != undefined)
 				   fn.post(data);

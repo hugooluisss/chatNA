@@ -30,7 +30,7 @@ switch($objModulo->getId()){
 	case 'mensajes':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select * from mensaje where idEvento = ".$_GET["evento"]." order by hora asc;");
+		$rs = $db->Execute("select * from mensaje where idEvento = ".$_GET["evento"]." ".($_GET['coordinador'] == 's'?"and coordinador = 'S'":"")." order by hora asc;");
 		$datos = array();
 		$obj = new TMensaje();
 		while(!$rs->EOF){
@@ -50,7 +50,7 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("mensajes", $datos);
 	break;
-	case 'panel':
+	case 'panel': case 'coordinador':
 		$db = TBase::conectaDB();
 		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha desc");
 		

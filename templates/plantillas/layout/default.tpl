@@ -30,7 +30,7 @@
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li {if $PAGE.modulo eq 'panel' or $PAGE.modulo eq ''}class="active"{/if}><a href="index.php?mod=panel">Inicio</a></li>
+	                <li {if $PAGE.modulo eq 'panel' or $PAGE.modulo eq ''}class="active"{/if}><a href="index.php?mod=setPantallaInicio">Inicio</a></li>
 	                {if $PAGE.sesionIniciada}
 	                	{if $PAGE.isAdmin eq true}
 			                <li class="dropdown">
