@@ -52,7 +52,7 @@
 	    <div id="modulo" class="container">
     	{include file=$PAGE.vista}
 	    </div>
-	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	    <script src="{$PAGE.ruta}js/jquery.min.js"></script>
 		<script type="text/javascript" src="{$PAGE.ruta}js/bootstrap.js"></script>
 		
 		<script type="text/javascript" src="{$PAGE.ruta}js/jquery.dataTables.min.js"></script>

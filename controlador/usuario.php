@@ -107,7 +107,7 @@ switch($objModulo->getId()){
 		
 		switch($obj->getTipo()){
 			case 1:
-				header('Location: ?mod=eventos');
+				header('Location: ?mod=panel');
 			break;
 			case 2:
 				header('Location: ?mod=panel');

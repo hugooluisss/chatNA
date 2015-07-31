@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-17 18:37:19
+<?php /* Smarty version Smarty-3.1.11, created on 2015-07-31 17:42:36
          compiled from "templates\plantillas\layout\default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:177545580a74a7b9530-79218059%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8454cce31b8bdba3e8638fbe5cc3e73478148781' => 
     array (
       0 => 'templates\\plantillas\\layout\\default.tpl',
-      1 => 1437176236,
+      1 => 1438382549,
       2 => 'file',
     ),
   ),
@@ -85,7 +85,8 @@ theme.less">
     	<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['PAGE']->value['vista'], $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	    </div>
-	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 js/bootstrap.js"></script>
 		

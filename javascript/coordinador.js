@@ -31,4 +31,7 @@ $(document).ready(function(){
 			post: mostrarMensages
 		}, true);
 	}, 3000);
+	
+	var objUsuario = new TUsuario;
+	objUsuario.sendUbicacion();
 });

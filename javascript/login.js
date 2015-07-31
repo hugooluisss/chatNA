@@ -5,12 +5,10 @@ $(document).ready(function(){
 	$("#frmLogin").submit(function(){
 		console.log("Validando datos del login");
 		if ($("#txtUsuario").val() == ""){
-			$("#msg-texto").html("Escribe tu usuario o grupo");
-			$('#winModal').modal({keyboard: true, backdrop: true, show: true});
+			alert("Escribe tu usuario o grupo");
 			$("#txtUsuario").focus();
 		}else if(($("#txtPass").val() == "")){
-			$("#msg-texto").html("Escribe tu contraseña");
-			$('#winModal').modal({keyboard: true, backdrop: true, show: true});
+			alert("Escribe tu contraseña");
 			$("#txtPass").focus();
 		}else{
 			console.log("Validación inicial exitosa");
@@ -22,8 +20,7 @@ $(document).ready(function(){
 				},
 				function(result){
 					if(!result.band){
-						$("#msg-texto").html(result.mensaje);
-						$('#winModal').modal({keyboard: true, backdrop: true, show: true});
+						alert(result.mensaje);
 						$("#txtPass").select();
 					}else
 						window.location.href = "?mod=panel";
