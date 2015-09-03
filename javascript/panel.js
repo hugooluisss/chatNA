@@ -35,15 +35,26 @@ $(document).ready(function(){
 	
 	$("#btnMensaje").click(function(){
 		var obj = new TMensaje;
-		
-		obj.enviar($("#txtMensaje").val());
+		$("#txtMensaje").attr("disabled", true);
+		$("#btnMensaje").attr("disabled", true);
+		obj.enviar($("#txtMensaje").val(), {
+			post: function(){
+				$("#txtMensaje").attr("disabled", false);
+				$("#btnMensaje").attr("disabled", false);
+			}
+		});
 	});
 	
 	$("#txtMensaje").keypress(function(e){
 		if(e.which == 13) {
 			var obj = new TMensaje;
-		
+			
+			$("#txtMensaje").attr("disabled", true);
+			$("#btnMensaje").attr("disabled", true);
+					
 			obj.enviar($("#txtMensaje").val(), {post: function (result){
+					$("#txtMensaje").attr("disabled", false);
+					$("#btnMensaje").attr("disabled", false);					
 					if (result.band == "true"){
 						$("#txtMensaje").val("");
 						$("#txtMensaje").focus();
@@ -74,5 +85,5 @@ $(document).ready(function(){
 		obj.getMensajes(undefined, {
 			post: mostrarMensages
 		});
-	}, 3000);
+	}, 5000);
 });

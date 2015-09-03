@@ -126,4 +126,12 @@ $conf['coordinador'] = array(
 	'seguridad' => true,
 	'js' => array('mensaje.class.js', 'coordinador.js'),
 	'capa' => LAYOUT_DEFECTO);
+	
+$conf['mediosEvento'] = array(
+	'controlador' => 'evento.php',
+	'vista' => 'eventos/medios.tpl',
+	'descripcion' => 'Lista de medios por los cuales se puede hacer una transmisión',
+	'seguridad' => true,
+	'js' => array('usuario.class.js', 'mensaje.class.js', 'admonEvento.js'),
+	'capa' => LAYOUT_DEFECTO);
 ?>

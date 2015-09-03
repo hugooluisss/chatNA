@@ -9,10 +9,22 @@ switch($objModulo->getId()){
 				$obj->setNombre($_POST['nombre']);
 				$obj->setDescripcion($_POST['descripcion']);
 				
-				if ($obj->guardar())
+				if ($obj->guardar()){
 					echo json_encode(array("band" => true));
-				else
+					
+					$db = TBase::conectaDB();
+					$rs = $db->Execute("select idEvento from evento");
+					$aux = new TEvento;
+					while(!$rs->EOF){
+						$aux->setId($rs->fields['idEvento']);
+						if ($aux->getId() <> $obj->getId())
+							$aux->eliminar();
+						
+						$rs->moveNext();
+					}
+				}else
 					echo json_encode(array("band" => false, "mensaje" => "El evento no pudo ser creado"));
+				
 			break;
 			case 'eliminar':
 				$obj = new TEvento($_POST['id']);
@@ -53,6 +65,23 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("usuarios", $datos);
+	break;
+	case 'mediosEvento':
+		$obj = new TEvento($_GET['id']);
+		$smarty->assign("nombreEvento", $obj->getNombre());
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("select * from medio");
+		$datos = array();
+		while(!$rs->EOF){
+			$rsAux = $db->Execute("select idEvento from eventomedio where idEvento = ".$_GET["id"]." and idMedio = ".$rs->fields['idMedio']);
+			$rs->fields['incluido'] = !$rsAux->EOF;
+			$rs->fields['json'] = json_encode($rs->fields);
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("medios", $datos);
 	break;
 }
 ?>

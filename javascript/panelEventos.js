@@ -61,6 +61,13 @@ function lista(){
 						window.location="?mod=panelAdmonEvento&id=" + el.idEvento;
 					});
 				});
+				
+				$(".btnMedios").each(function(){
+					$(this).click(function(){
+						var el = jQuery.parseJSON($(this).attr("data"));
+						window.location="?mod=mediosEvento&id=" + el.idEvento;
+					});
+				});
 			}
 		});
 }

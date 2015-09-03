@@ -23,6 +23,7 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" class="btnModificar" data='{$row.json}'>Modificar</a></li>
+								<li><a href="#" class="btnMedios" data='{$row.json}'>Medios</a></li>
 								<li><a href="#" class="btnEliminar" data='{$row.json}'>Eliminar</a></li>
 								<li><a href="#" class="btnAdmonEvento" data='{$row.json}'>Panel de administración</a></li>
 							</ul>

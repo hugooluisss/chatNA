@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-16 20:13:32
+<?php /* Smarty version Smarty-3.1.11, created on 2015-08-31 15:31:11
          compiled from "templates\plantillas\modulos\eventos\lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:203445580d89e9bd6b5-97491904%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56e819877708d25eda58ba34175f603f6801d4ec' => 
     array (
       0 => 'templates\\plantillas\\modulos\\eventos\\lista.tpl',
-      1 => 1437095489,
+      1 => 1441053061,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,8 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#" class="btnModificar" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>Modificar</a></li>
+								<li><a href="#" class="btnMedios" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'>Medios</a></li>
 								<li><a href="#" class="btnEliminar" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>Eliminar</a></li>
 								<li><a href="#" class="btnAdmonEvento" data='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
