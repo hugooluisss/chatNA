@@ -39,7 +39,7 @@ $conf['panel'] = array(
 	'vista' => 'usuarios/panel.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
-	'js' => array('usuario.class.js', 'mensaje.class.js', 'panel.js'),
+	'js' => array('usuario.class.js', 'mensaje.class.js', 'panel.js', 'medio.class.js'),
 	'capa' => LAYOUT_DEFECTO);
 
 $conf['cchat'] = array(
@@ -132,6 +132,6 @@ $conf['mediosEvento'] = array(
 	'vista' => 'eventos/medios.tpl',
 	'descripcion' => 'Lista de medios por los cuales se puede hacer una transmisión',
 	'seguridad' => true,
-	'js' => array('usuario.class.js', 'mensaje.class.js', 'admonEvento.js'),
+	'js' => array('evento.class.js', 'medioEvento.js'),
 	'capa' => LAYOUT_DEFECTO);
 ?>

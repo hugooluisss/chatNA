@@ -34,6 +34,23 @@ switch($objModulo->getId()){
 				else
 					echo json_encode(array("band" => false, "mensaje" => "El evento no pudo ser eliminado"));
 			break;
+			
+			case 'addSala':
+				$obj = new TEvento($_POST['id']);
+				
+				if ($obj->addMedio($_POST['sala']))
+					echo json_encode(array("band" => true));
+				else
+					echo json_encode(array("band" => false, "mensaje" => "No pudo ser agregada la sala"));
+			break;
+			case 'delSala':
+				$obj = new TEvento($_POST['id']);
+				
+				if ($obj->delMedio($_POST['sala']))
+					echo json_encode(array("band" => true));
+				else
+					echo json_encode(array("band" => false, "mensaje" => "Upps... no se pudo eliminar el medio de la sala"));
+			break;
 		}
 	break;
 	case 'listaEventos':
@@ -82,6 +99,8 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("medios", $datos);
+		
+		$smarty->assign("idEvento", $_GET['id']);
 	break;
 }
 ?>

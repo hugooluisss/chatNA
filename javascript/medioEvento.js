@@ -1,8 +1,26 @@
 $(document).ready(function(){
 	$(".chkMedio").each(function(){
 		$(this).change(function(){
-			var el = jQuery.parseJSON($(this).attr("data"));
-			alert($(this).is(':checked')?'asdfasdfasdf':'');
+			var obj = new TEvento;
+			if ($(this).is(':checked'))
+				obj.addMedio($("#id").val(), $(this).val(), {
+					before: function(){
+						$(this).disabled = true;
+					},
+					after: function(data){
+						$(this).disabled = false;
+					}
+				});
+			else
+				obj.delMedio($("#id").val(), $(this).val(), {
+					before: function(){
+						$(this).disabled = true;
+					},
+					after: function(data){
+						$(this).disabled = false;
+					}
+				});
+				
 		});
 	});
 });

@@ -10,3 +10,5 @@
 	</div>
 	{/foreach}
 </div>
+
+<input id="id" type="hidden" value="{$idEvento}" />

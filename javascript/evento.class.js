@@ -34,4 +34,46 @@ TEvento = function(){
 			"json"
 		);
 	}
+	
+	this.addMedio = function(id, sala, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post(
+			'?mod=cevento&action=addSala', {
+				"id": id,
+				"sala": sala
+			},
+			function(result){
+				if (fn.after != undefined)
+					fn.after(result);
+					
+				if(!result.band){
+					alert(result.mensaje)
+				}else
+					lista();
+			},
+			"json"
+		);
+	} 
+	
+	this.delMedio = function(id, sala, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post(
+			'?mod=cevento&action=delSala', {
+				"id": id,
+				"sala": sala
+			},
+			function(result){
+				if (fn.after != undefined)
+					fn.after(result);
+					
+				if(!result.band){
+					alert(result.mensaje)
+				}else
+					lista();
+			},
+			"json"
+		);
+	}
 }

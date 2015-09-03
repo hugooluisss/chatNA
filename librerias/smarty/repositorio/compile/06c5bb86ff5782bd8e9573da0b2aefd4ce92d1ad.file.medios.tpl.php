@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-08-31 15:52:00
+<?php /* Smarty version Smarty-3.1.11, created on 2015-09-03 17:01:48
          compiled from "templates\plantillas\modulos\eventos\medios.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2800355e4ba564ead40-79709436%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '06c5bb86ff5782bd8e9573da0b2aefd4ce92d1ad' => 
     array (
       0 => 'templates\\plantillas\\modulos\\eventos\\medios.tpl',
-      1 => 1441054212,
+      1 => 1441317421,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'nombreEvento' => 0,
     'medios' => 0,
     'row' => 0,
+    'idEvento' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -44,4 +45,7 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 		</label>
 	</div>
 	<?php } ?>
-</div><?php }} ?>
+</div>
+
+<input id="id" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['idEvento']->value;?>
+" /><?php }} ?>

@@ -69,5 +69,23 @@ Class TEvento{
 		
 		return true;
 	}
+	
+	public function addMedio($id = ''){
+		if ($this->getId() == '' or $id == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("insert into eventomedio (idEvento, idMedio) values (".$this->getId().", ".$id.")");
+		
+		return $rs?true:false;
+	}
+	
+	public function delMedio($id = ''){
+		if ($this->getId() == '' or $id == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from eventomedio where idEvento = ".$this->getId()." and idMedio = ".$id);
+		
+		return $rs?true:false;
+	}
 }
 ?>
