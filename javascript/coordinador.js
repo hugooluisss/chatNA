@@ -6,7 +6,9 @@ $(document).ready(function(){
 	}, true);
 	
 	function mostrarMensages(data){
-		$('#conversacion').html(data);
+		$.each(mensajes, function(key, el){
+			$("#conversacionAdmon").append(el);			
+		});
 		if ($("#chkScroll").prop("checked"))
 			$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
 				

@@ -1,8 +1,10 @@
 $(document).ready(function(){
 	var objMsg = new TMensaje;
 	function getMSG(){
-		objMsg.getMensajes($("#id").val(), {post: function(data){
-			$("#conversacionAdmon").html(data);
+		objMsg.getMensajes($("#id").val(), {post: function(data, mensajes){
+			$.each(mensajes, function(key, el){
+				$("#conversacionAdmon").append(el);			
+			});
     		$("#conversacionAdmon .well").each(function(){
     			var el = jQuery.parseJSON($(this).attr("obj"));
     			$(this).addClass("mensajeActivo");

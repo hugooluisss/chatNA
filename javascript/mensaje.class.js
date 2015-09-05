@@ -1,5 +1,8 @@
+var lastId = null;
+
 TMensaje = function(){
 	var self = this;
+	
 	
 	this.enviar = function(mensaje, fn){
 		$.post(
@@ -18,15 +21,35 @@ TMensaje = function(){
 	};
 	
 	this.getMensajes = function(id, fn, coordinador){
-		$.ajax({
-			type: "GET",
-			url: '?mod=mensajes',
-			data: {evento: id == undefined?$("#evento").val():id, "coordinador": coordinador?'s':'n'},
-			success: function(data) {
-				if (fn != undefined)
-				   fn.post(data);
-			}
-		});
+		$.post(
+			'?mod=mensajes', {
+				"id" :  id == undefined?$("#evento").val():id, 
+				"coordinador": coordinador?'s':'n',
+				"ultimo" : lastId
+			},
+			function(result){
+				if(result.band == "false")
+					alert("Upps, ocurrio un error recuperar los mensjes");
+				else{
+					var mensajes = new Array;
+					$.each(result.mensajes, function(key, mensaje){
+						
+						el = $('<div/>', { 'class': 'well well-sm mensajeActivo', 'obj': mensaje.json });
+						el.html('<p>' + mensaje.from + ' dijo el <span class="label label-warning">' + mensaje.hora + '</span></p>' + mensaje.texto);
+						
+						mensajes.push(el);
+						lastId = mensaje.idMensaje;
+					});
+					
+					if (fn.post != undefined)
+						fn.post(result, mensajes);
+				} 
+				
+			},
+			"json"
+		);
+		
+		
 	};
 	
 	this.enviarCoordinador = function(id, fn){

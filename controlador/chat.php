@@ -28,7 +28,7 @@ switch($objModulo->getId()){
 		}
 	break;
 	case 'mensajes':
-		$db = TBase::conectaDB();
+		/*$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("select * from mensaje where idEvento = ".$_GET["evento"]." ".($_GET['coordinador'] == 's'?"and coordinador = 'S'":"")." order by hora asc;");
 		$datos = array();
@@ -49,6 +49,29 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("mensajes", $datos);
+		 * */
+		$db = TBase::conectaDB();
+		
+		$s = $_POST['ultimo'] <> ''?(" and idMensaje > ".$_POST['ultimo']):'';
+		$rs = $db->Execute("select * from mensaje where idEvento = ".$_POST["id"]." ".($_GET['coordinador'] == 's'?"and coordinador = 'S'":"").$s." order by hora asc;");
+		$datos = array();
+		$obj = new TMensaje();
+		while(!$rs->EOF){
+			$obj->setId($rs->fields['idMensaje']);
+			
+			$el = array();
+			$el["texto"] = $obj->getTexto();
+			$el["idMensaje"] = $rs->fields['idMensaje'];
+			$el["hora"] = $obj->getHora();
+			$el["from"] = $obj->usuario->getNombre();
+			$el["coordinador"] = $obj->isShowCoordinador();
+			$el["json"] = json_encode($el);
+			array_push($datos, $el);
+			
+			$rs->moveNext();
+		}
+		
+		echo json_encode(array("band" => true, "mensajes" => $datos));		 
 	break;
 	case 'panel': case 'coordinador':
 		$db = TBase::conectaDB();

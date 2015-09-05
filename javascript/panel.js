@@ -49,8 +49,11 @@ $(document).ready(function(){
 		post: mostrarMensages
 	});
 	
-	function mostrarMensages(data){
-		$('#conversacion').html(data);
+	function mostrarMensages(data, mensajes){
+		$.each(mensajes, function(key, el){
+			$("#conversacion").append(el);			
+		});
+		
 		if ($("#chkScroll").prop("checked"))
 			$("#conversacion").scrollTop($("#conversacion").prop("scrollHeight"));
 				
