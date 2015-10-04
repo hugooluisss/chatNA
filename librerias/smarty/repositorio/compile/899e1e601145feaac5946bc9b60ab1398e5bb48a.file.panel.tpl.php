@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-09-03 17:35:07
+<?php /* Smarty version Smarty-3.1.11, created on 2015-09-07 15:24:06
          compiled from "templates\plantillas\modulos\usuarios\panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:246585580a7adabe669-13951032%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '899e1e601145feaac5946bc9b60ab1398e5bb48a' => 
     array (
       0 => 'templates\\plantillas\\modulos\\usuarios\\panel.tpl',
-      1 => 1441319659,
+      1 => 1441657443,
       2 => 'file',
     ),
   ),
@@ -40,8 +40,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['medio']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['medio']->_loop = true;
 ?>
 				<option value="<?php echo $_smarty_tpl->tpl_vars['medio']->value['idMedio'];?>
-" <?php if ($_smarty_tpl->tpl_vars['medio']->value['idMedio']==$_smarty_tpl->tpl_vars['medioDefecto']->value){?>selected<?php }?> data="<?php echo $_smarty_tpl->tpl_vars['medio']->value['json'];?>
-"><?php echo $_smarty_tpl->tpl_vars['medio']->value['nombre'];?>
+" <?php if ($_smarty_tpl->tpl_vars['medio']->value['idMedio']==$_smarty_tpl->tpl_vars['medioDefecto']->value){?>selected<?php }?> data='<?php echo $_smarty_tpl->tpl_vars['medio']->value['json'];?>
+'><?php echo $_smarty_tpl->tpl_vars['medio']->value['nombre'];?>
 </option>
 			<?php } ?>
 		</select>

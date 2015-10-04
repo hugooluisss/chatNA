@@ -20,7 +20,7 @@ TMedio = function(){
 			plugins: {
 				cloudfront: {
 					url: "flowplayer.rtmp-3.2.13.swf",
-					netConnectionUrl: 'rtmp://209.208.97.249:1936/' + + (sala.medio == undefined?'live':sala.medio)
+					netConnectionUrl: 'rtmp://209.208.97.249:1936/' + (sala.medio == undefined?'live':sala.medio)
 				},
 				controls: {
 					playlist: false,

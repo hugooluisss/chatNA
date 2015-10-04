@@ -37,7 +37,7 @@ $(document).ready(function(){
 					if (result.band == "true"){
 						$("#txtMensaje").val("");
 						$("#txtMensaje").focus();
-						obj.getMensajes(undefined, {post: mostrarMensages});
+						//obj.getMensajes(undefined, {post: mostrarMensages});
 					}
 				}
 			});

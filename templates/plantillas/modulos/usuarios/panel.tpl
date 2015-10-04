@@ -5,7 +5,7 @@
 	<div class="col-lg-6">
 		<select id="selMedio">
 			{foreach from=$medios item=medio name=medios}
-				<option value="{$medio.idMedio}" {if $medio.idMedio eq $medioDefecto}selected{/if} data="{$medio.json}">{$medio.nombre}</option>
+				<option value="{$medio.idMedio}" {if $medio.idMedio eq $medioDefecto}selected{/if} data='{$medio.json}'>{$medio.nombre}</option>
 			{/foreach}
 		</select>
 	</div>
