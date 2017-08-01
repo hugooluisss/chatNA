@@ -15,9 +15,11 @@ Class TEvento{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from evento where idEvento = ".$id);
+		$sql = "select * from evento where idEvento = ".$id;
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$row = $rs->fetch_assoc();
 		
-		foreach($rs->fields as $key => $val)
+		foreach($row as $key => $val)
 			$this->$key = $val;
 		
 		return true;
@@ -49,14 +51,18 @@ Class TEvento{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("insert into evento (idEvento, nombre, descripcion, fecha, estado) values (null, '', '', now(), 'A')");
-			$this->idEvento = $db->Insert_ID();
+			$sql = "insert into evento (idEvento, nombre, descripcion, fecha, estado) values (null, '', '', now(), 'A')";
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			
+			$this->idEvento = $db->$db->insert_id;
 		}
 		
-		$db->Execute("update evento set
+		$sql = "update evento set
 				nombre = '".$this->getNombre()."',
 				descripcion = '".$this->getDescripcion()."'
-			where idEvento = ".$this->getId());
+			where idEvento = ".$this->getId();
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 		return true;
 	}
@@ -65,7 +71,8 @@ Class TEvento{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$db->Execute("update evento set estado = 'E' where idEvento = ".$this->getId());
+		$sql = "update evento set estado = 'E' where idEvento = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return true;
 	}
@@ -74,7 +81,8 @@ Class TEvento{
 		if ($this->getId() == '' or $id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("insert into eventomedio (idEvento, idMedio) values (".$this->getId().", ".$id.")");
+		$sql = "insert into eventomedio (idEvento, idMedio) values (".$this->getId().", ".$id.")";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return $rs?true:false;
 	}
@@ -83,7 +91,8 @@ Class TEvento{
 		if ($this->getId() == '' or $id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("delete from eventomedio where idEvento = ".$this->getId()." and idMedio = ".$id);
+		$sql = "delete from eventomedio where idEvento = ".$this->getId()." and idMedio = ".$id;
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return $rs?true:false;
 	}

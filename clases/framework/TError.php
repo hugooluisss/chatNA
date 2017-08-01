@@ -33,7 +33,7 @@ class TError{
 			$texto .= '<strong> Error en la linea <span style="color:BLUE">'.$linea.'</span> del archivo <span style="color:BLUE">'.$archivo.' - MOD: '.$_REQUEST['mod'].',</span> el dia <span style="color:BLUE">'.date('d/m/Y H:m').',</span><br /></strong>';
 			$texto .= '<strong><p>El mensaje Mandado es :</p></strong>';
 			$texto .= $cadena.'<br />';
-			$texto .= '<hr>';
+			$texto .= '<hr>'.PHP_EOL;
 		
 			$this->escribeArchivo($texto);
 		}
@@ -72,7 +72,7 @@ class TError{
 				return '<b style="color:RED;">Error de Compilacion</b>';
 			break;
 			default:
-				return '<b style="color:ORANGE">Error desconocido</b>';
+				return '<b style="color:ORANGE">Error desconocido '.$numero.'</b>';
 			break;	
 		}
 	}
@@ -120,6 +120,10 @@ function gestorErrores($numerror, $cadena, $archivo, $linea, $contexto){
 
 function ErrorSistema($texto){
 	gestorErrores(257, $texto, 'Desconocido', 0, 'asdf');
+}
+
+function ErrorMysql($db, $sql){
+	gestorErrores(257, $db->error." en ".PHP_EOL.$sql, 'MySQL', 0, 'asdf');
 }
 
 set_error_handler("gestorErrores");

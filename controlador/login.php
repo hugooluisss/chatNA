@@ -2,24 +2,24 @@
 global $objModulo;
 
 switch($objModulo->getAction()){
-	case 'iniciar': case 'validarCredenciales':
+	case 'login':
 		$db = TBase::conectaDB();
-		
-		$rs = $db->Execute("select idUsuario, pass from usuario where upper(user) = upper('".$_POST['usuario']."') and estado = 'A'");
+		$sql = "select idUsuario, pass from usuario where upper(user) = upper('".$_POST['usuario']."') and estado = 'A'";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		$result = array('band' => false, 'mensaje' => 'Error al consultar los datos');
-		if($rs->EOF)
+		$row = $rs->fetch_assoc();
+		
+		if($rs->num_rows <= 0)
 			$result = array('band' => false, 'mensaje' => 'El usuario no es válido'); 
-		elseif($rs->fields['pass'] <> md5($_POST['pass']))
+		elseif($row['pass'] <> md5($_POST['pass']))
 			$result = array('band' => false, 'mensaje' => 'La contraseña no es válida');
 		else
 			$result = array('band' => true);
 		
 		if($result['band']){
-			$obj = new TUsuario($rs->fields['idUsuario']);
-			$sesion['usuario'] = 		$rs->fields['idUsuario'];
-			$sesion['navegador'] = 			$obj->getNavegador();
-			$sesion['sistemaOperativo'] = 	$obj->getSistemaOperativo();
+			$obj = new TUsuario($row['idUsuario']);
+			$sesion['usuario'] = $row['idUsuario'];
 			$_SESSION[SISTEMA] = $sesion;
 			
 			$obj->setAcceso();

@@ -2,10 +2,10 @@
 function includeDir($dir){
     $directorio = scandir($dir);
     foreach($directorio as $archivo){
-            $separado = explode(".", $archivo);
-            $ext = strtolower($separado[count($separado)-1]);
-            if ($ext == "php")
-                    include_once($dir.$archivo);
+        $separado = explode(".", $archivo);
+        $ext = strtolower($separado[count($separado)-1]);
+        if ($ext == "php")
+                include_once($dir.$archivo);
     }
 }
 
@@ -50,5 +50,35 @@ function getMiniatura($url, $miniatura_ancho_maximo = 80, $miniatura_alto_maximo
 	
 	#header('Content-Type: image/jpeg');
 	return $thumb;
+}
+
+function formatBytes($bytes, $precision = 3) { 
+    if ($bytes >= 1073741824)
+		$bytes = number_format($bytes / 1073741824, 2) . ' GB';
+	elseif ($bytes >= 1048576)
+		$bytes = number_format($bytes / 1048576, 2) . ' MB';
+	elseif ($bytes >= 1024)
+		$bytes = number_format($bytes / 1024, 2) . ' KB';
+	elseif ($bytes > 1)
+		$bytes = $bytes . ' bytes';
+	elseif ($bytes == 1)
+		$bytes = $bytes . ' byte';
+	else
+		$bytes = '0 bytes';
+
+	return $bytes;        
+} 
+
+function eliminarDir($carpeta){
+	foreach(glob($carpeta . "/*") as $archivos_carpeta){
+		//echo $archivos_carpeta;
+ 
+		if (is_dir($archivos_carpeta))
+			eliminarDir($archivos_carpeta);
+		else
+			unlink($archivos_carpeta);
+    }
+    
+    rmdir($carpeta);
 }
 ?>

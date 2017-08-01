@@ -11,7 +11,8 @@
 
 class TMail{
 	private $phpMailer;
-	private $permitir = false;
+	private $permitir = true;
+	private $pruebas = false;
 	
 /**
 * Metodo Constructor
@@ -22,20 +23,29 @@ class TMail{
 		$this->phpMailer = new PHPMailer();
 		$datos = $rs->fields;
 		#$this->phpMailer->CharSet("UTF8");
+		global $ini;
 		
-		$this->empresa['nombreCorto'] = utf8_decode("Sistema de inscripciones");
-		$this->phpMailer->IsSMTP();
-		$this->phpMailer->Mailer = "smtp";
-		$this->phpMailer->SMTPSecure = "ssl";
-		$this->phpMailer->Host = $ini['mail']['servidor'];
-
-		$this->phpMailer->SMTPAuth = true;
+		$this->empresa['nombreCorto'] = utf8_decode($ini['sistema']['nombreEmpresa']);
+		#$this->phpMailer->IsSMTP();
 		$this->phpMailer->Port = $ini['mail']['puerto'];
-		$this->phpMailer->Username = $ini['mail']['usuario'];
+		$this->phpMailer->Host = $ini['mail']['server'];
+		#$this->phpMailer->Host = "localhost";
+		
+		$this->phpMailer->SMTPAuth = true;
+		$this->phpMailer->Username = $ini['mail']['user'];
 		$this->phpMailer->Password = $ini['mail']['pass'];
-		$this->phpMailer->IsHTML (true);
-		$this->phpMailer->FromName = 'Inscripciones';
+		$this->phpMailer->IsHTML(true);
+		$this->phpMailer->FromName = utf8_decode($ini['sistema']['nombre']);
+		$this->setDirOrigen($ini['mail']['user']);
+		#$this->phpMailer->SMTPSecure = 'tls';
+		#$this->phpMailer->SMTPDebug  = 2;
+		if ($ini['mail']['contestarA'] <> '')
+			$this->phpMailer->AddReplyTo($ini['mail']['contestarA']);
+			
 		$this->permitir = true;
+		
+		#if (file_exists("templates/img/logomail.png"))
+		#	$this->addLogo("templates/img/logomail.png");
 	}
 	
 	public function setUser($val){
@@ -73,8 +83,11 @@ class TMail{
 * @param string $mail Direccion
 * @param string $nombre Nombre de la persona
 */		
-	public function setDestino($mail, $nombre = ""){
-		$this->phpMailer->AddAddress($mail, $nombre);
+	public function addDestino($mail, $nombre = ""){
+		if ($this->pruebas)
+			$this->phpMailer->AddAddress("hugooluisss@gmail.com", "Pruebas");
+		else
+			$this->phpMailer->AddAddress($mail, $nombre);
 	}
 
 /**
@@ -101,9 +114,9 @@ class TMail{
 */		
 	public function construyeMail($texto, $datos){
 		foreach($datos as $indice => $valor)
-			$texto = str_replace('#'.$indice.'#', $datos[$indice], $texto);
+			$texto = str_replace('[*'.$indice.'*]', $datos[$indice], $texto);
 			
-		return $texto;
+		return utf8_decode($texto);
 	}
 
 /**
@@ -121,6 +134,17 @@ class TMail{
 */
 	public function setDirOrigen($dir){
 		$this->phpMailer->From = $dir;
+		
+		return true;
+	}
+	
+	public function addLogo($file){
+		$this->phpMailer->AddEmbeddedImage($file, "logo", "logo.png");
+		return true;
+	}
+	
+	public function addImg($file, $nombre, $nombreArchivo){
+		$this->phpMailer->AddEmbeddedImage($file, $nombre, $nombreArchivo);
 		
 		return true;
 	}

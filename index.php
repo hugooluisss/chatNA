@@ -1,15 +1,16 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 #variables
 $ini = array();
 $ini = parse_ini_file('aplicacion.ini', true);
-if ($ini['sistema']['debug'] == 'off')
-	ini_set('display_errors', '0');
-else 
-	ini_set('display_errors', '1');
 
+ini_set('display_errors', '0');
+
+include('librerias/funciones.php');
 include_once("config.php");
 define("MODULO_DEFECTO", 'inicio');
-define("MODULO_SESION_INICIADA", 'setPantallaInicio');
+define("MODULO_SESION_INICIADA", 'panelPrincipal');
 define("SISTEMA", $ini['sistema']['nombreAplicacion']);
 
 session_start();
@@ -20,16 +21,16 @@ $modulo = $_GET['mod'] == ''?(isset($sesion['usuario'])?MODULO_SESION_INICIADA:M
 header('Content-Type: text/html; charset=UTF-8');
 setlocale(LC_CTYPE, "es_ES");
 date_default_timezone_set("America/Mexico_City");
-
 #librerias
 define('ADODB_ERROR_LOG_DEST','errors.log');
 define('ADODB_ERROR_LOG_TYPE',2);
-include('librerias/adodb/adodb-errorhandler.inc.php');
-include('librerias/adodb/adodb.inc.php');
-require_once('librerias/phpMailer/class.phpmailer.php');
-include('librerias/funciones.php');
+
+require_once('librerias/phpMailer/PHPMailerAutoload.php');
 require('librerias/fpdf/fpdf.php');
 require('librerias/fpdf/tfpdf.php');
+require('librerias/upload/uploadHandler.php');
+require('librerias/bmptojpg.php');
+//require('librerias/excelRead/reader.php');
 
 ini_set("include_path", ini_get("include_path").PATH_SEPARATOR.dirname(__FILE__)."/librerias/pear/");
 includeDir("clases/framework/");
@@ -38,11 +39,11 @@ includeDir("clases/aplicacion/");
 $objModulo = new TModulo($modulo);
 $bandSesion = true;
 if ($objModulo->requiereSeguridad()){
-	if (!isset($sesion['usuario'])){
+	if (!isset($sesion['usuario']) or $sesion['usuario'] == ''){
 		$bandSesion = false;
 		$modulo = MODULO_DEFECTO;
 		unset($objModulo);
-		$objModulo = new TModulo($modulo); 
+		$objModulo = new TModulo($modulo);
 	}
 }else
 	$bandSesion = isset($sesion['usuario']);
@@ -56,6 +57,7 @@ define('COMPILE', 'librerias/smarty/repositorio/compile/');
 require_once('librerias/smarty/Smarty.class.php');
 $smarty = new Smarty;
 $smarty->debugging = (strtoupper($ini['sistema']['debug']) == 'ON');
+$smarty->debugging = false;
 $smarty->caching = (strtoupper($ini['sistema']['caching']) == 'ON');
 $smarty->cache_lifetime = 120;
 
@@ -64,14 +66,14 @@ $smarty->config_dir = CONFIG;
 $smarty->cache_dir = CACHE;
 $smarty->compile_dir = COMPILE;
 
-$objUserGeneral = new TUsuario($sesion['usuario']);
-$objUserGeneral->setAcceso();
+$userSesion = new TUsuario($sesion['usuario']);
+
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
 	"css" => DIR_PLANTILLAS."/css/",
-	"iconos" => DIR_PLANTILLAS."/iconos/",
+	"imagenes" => DIR_PLANTILLAS."/img/",
 	"sesion" => $_SESSION[SISTEMA],
-	"debug" => $ini['sistema']['debug'] == 1,
+	"debug" => strtoupper($ini['sistema']['debug']) == "ON",
 	"sesionIniciada" => $bandSesion?'1':'0',
 	"vista" => $objModulo->getRutaVista(),
 	"nombreAplicacion" => SISTEMA,
@@ -85,7 +87,9 @@ $datosPlantilla = array(
 	"rutaModulos" => TEMPLATE,
 	"modulo" => $modulo,
 	"scriptsJS" => $objModulo->getScriptsJS(),
-	"isAdmin" => $objUserGeneral->isAdmin());
+	"usuario" => $userSesion,
+	"url" => $ini['sistema']['url'],
+	"maps" => $ini['sistema']['maps']);
 
 foreach($_GET as $indice => $valor){
 	$_GET[$indice] = ereg_replace('\\"', "",$_GET[$indice]);
@@ -93,15 +97,15 @@ foreach($_GET as $indice => $valor){
 	$_GET[$indice] = ereg_replace("'", "''", $_GET[$indice]);
 }
 	
-foreach($_POST as $indice => $valor){	
-	$_POST[$indice] = ereg_replace('\\"', "", $_POST[$indice]);	
-	$_POST[$indice] = ereg_replace("'", "''", $_POST[$indice]);
+foreach($_POST as $indice => $valor){
+	if ($objModulo->getDebugSeguridad())
+		$_POST[$indice] = addslashes($_POST[$indice]);
 }
 
 define('TAMPAG', $ini['config']['TAMPAG']);
 define('NUMPAG', $ini['config']['NUMPAG']);
 
-if ($objModulo->getRutaControlador() <> '')
+if ($objModulo->getRutaControlador() <> '' and file_exists('controlador/'.$objModulo->getRutaControlador()))
 	require('controlador/'.$objModulo->getRutaControlador());
 
 $smarty->assign("PAGE", $datosPlantilla);

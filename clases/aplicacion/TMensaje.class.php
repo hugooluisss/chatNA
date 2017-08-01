@@ -16,9 +16,11 @@ Class TMensaje{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select * from mensaje where idMensaje = ".$id);
-
-		foreach($rs->fields as $field => $val)
+		$sql = "select * from mensaje where idMensaje = ".$id;
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$row = $rs->fetch_assoc();
+		
+		foreach($row as $field => $val)
 			switch($field){
 				case 'idUsuario':
 					$this->usuario = new TUsuario($val);
@@ -40,9 +42,14 @@ Class TMensaje{
 		if ($mensaje == '' or $sesion['usuario'] == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha");
-		if ($rs->EOF) return false;
-		$rs = $db->Execute("insert into mensaje (idMensaje, idEvento, idUsuario, hora, texto) values (null, ".$rs->fields['idEvento'].", ".$sesion['usuario'].", now(), '".$mensaje."')");
+		$sql = "select idEvento from evento where estado = 'A' order by fecha";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if ($rs->num_rows == 0) return false;
+		
+		$sql = "insert into mensaje (idMensaje, idEvento, idUsuario, hora, texto) values (null, ".$rs->fields['idEvento'].", ".$sesion['usuario'].", now(), '".$mensaje."')";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
 		if ($rs) return true;
 		
 		return false;
@@ -59,7 +66,9 @@ Class TMensaje{
 	public function showCoordinador(){
 		$db = TBase::conectaDB();
 		
-		return $db->Execute("update mensaje set coordinador = 'S' where idMensaje = ".$this->getId())?true:false;
+		$sql = "update mensaje set coordinador = 'S' where idMensaje = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		return $rs?true:false;
 	}
 	
 	public function isShowCoordinador(){

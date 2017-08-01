@@ -9,15 +9,16 @@ define('STATUS', 'En desarrollo');
 
 define('LAYOUT_DEFECTO', 'layout/default.tpl');
 define('LAYOUT_AJAX', 'layout/update.tpl');
+define('LAYOUT_JSON', 'layout/json.tpl');
+define('LAYOUT_TOPNAV', 'layout/topnav.tpl');
 
 #Login y su controlador	
 $conf['inicio'] = array(
-	#'controlador' => 'index.php',
-	'vista' => 'usuarios/bienvenido.tpl',
 	'descripcion' => '',
 	'seguridad' => false,
-	'js' => array('login.js'),
-	'capa' => LAYOUT_DEFECTO);
+	'js' => array('usuario.class.js'),
+	'jsTemplate' => array('login.js'),
+	'capa' => 'layout/login.tpl');
 	
 #Login y su controlador	
 $conf['clogin'] = array(
@@ -34,13 +35,13 @@ $conf['setPantallaInicio'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 
-$conf['panel'] = array(
+$conf['panelPrincipal'] = array(
 	'controlador' => 'chat.php',
 	'vista' => 'usuarios/panel.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
 	'js' => array('usuario.class.js', 'mensaje.class.js', 'panel.js', 'medio.class.js'),
-	'capa' => LAYOUT_DEFECTO);
+	'capa' => LAYOUT_TOPNAV);
 
 $conf['cchat'] = array(
 	'controlador' => 'chat.php',

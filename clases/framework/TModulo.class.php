@@ -29,7 +29,21 @@ class TModulo{
 		$this->idModulo = $id;
 		$this->categoria = $conf[$id]["categoria"] == ''?"Sin especificar":$conf[$id]["categoria"];
 		$this->seguridad = $conf[$id]["seguridad"];
-		$this->scriptsJS = $conf[$id]["js"] == ''?array():$conf[$id]["js"];
+		$this->perfiles = $conf[$id]["perfiles"];
+		$this->scriptsJS = array();
+		
+		if (isset($conf[$id]['js'])){
+			foreach($conf[$id]['js'] as $key => $val)
+				$conf[$id]['js'][$key] = "javascript/".$val;
+			$this->scriptsJS = array_merge($this->scriptsJS, $conf[$id]['js']);
+		}
+		
+		if (isset($conf[$id]['jsTemplate'])){
+			foreach($conf[$id]['jsTemplate'] as $key => $val)
+				$conf[$id]['jsTemplate'][$key] = "templates/javascript/".$val;
+			$this->scriptsJS = array_merge($this->scriptsJS, $conf[$id]['jsTemplate']);
+		}
+			
 		if ($conf[$id]["vista"] <> '') $this->setVista($conf[$id]["vista"]);
 		if ($conf[$id]["controlador"] <> '') $this->setControlador($conf[$id]["controlador"]);
 		$this->setCapa($conf[$id]["capa"]);
@@ -47,7 +61,9 @@ class TModulo{
 	public function requiereSeguridad(){
 		if ($this->idModulo == '')
 			return false;
-			
+		
+		if ($_POST['movil'] == 1) return false;
+		
 		return $this->seguridad === true or $this->seguridad == 1;
 	}
 	
@@ -92,7 +108,11 @@ class TModulo{
 	
 	public function getRutaCapa(){
 		if (isset($this->capa))
-			return $this->capa;
+			#if ($_POST['movil'] == 1 and $_POST['json'] == true)
+			if ($_POST['json'] == true)
+				return LAYOUT_JSON;
+			else
+				return $this->capa;
 		
 		return '';
 	}
@@ -102,6 +122,21 @@ class TModulo{
 	}
 	
 	public function getAction(){
-		return $_GET['action'];
+		return $_POST['action'] == ''?$_GET['action']:$_POST['action'];
+	}
+	
+	public function getDebugSeguridad(){
+		return $this->debugSeg == false?false:true;
+	}
+	
+	#Para saber si el perfil de usuario puede ver el módulo
+	public function userCanSee($perfil){
+		if ($this->perfiles == '') return true;
+		
+		if (!is_array($this->perfiles)) return true;
+		
+		if (in_array($perfil, $this->perfiles)) return true;
+		
+		return false;
 	}
 }

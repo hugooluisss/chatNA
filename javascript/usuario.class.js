@@ -1,40 +1,53 @@
 TUsuario = function(){
 	var self = this;
 	
-	this.guardar = function(id, tipo, user, pass, email){
-		$.post(
-			'?mod=cusuario&action=guardar', {
-				"id" : id,
-				"user" : user,
-				"tipo" : tipo,
-				"pass" : pass,
-				"email" : email
-			},
-			function(result){
-				if(result.band == "false")
-					alert("Upps, ocurrio un error guardar los datos");
-				else{
-					lista();
-					$('#winInsertar').modal('hide');
-				}
-			},
-			"json"
-		);
+	this.add = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cusuarios', {
+				"id": datos.id,
+				"nombre": datos.nombre,
+				"email": datos.email, 
+				"pass": datos.pass,
+				"tipo": datos.tipo,
+				"action": "add"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
 	};
 	
-	this.eliminar = function(id){
-		$.post(
-			'?mod=cusuario&action=eliminar', {
-				"id": id
-			},
-			function(result){
-				if(!result.band){
-					alert(result.mensaje)
-				}else
-					lista();
-			},
-			"json"
-		);
+	this.del = function(usuario, fn){
+		$.post('?mod=cusuarios&action=del', {
+			"usuario": usuario,
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+			if (data.band == 'false'){
+				alert("Ocurrió un error al eliminar al usuario");
+			}
+		}, "json");
+	};
+	
+	this.login = function(usuario, pass, fn){
+		if (fn.before !== undefined)
+			fn.before();
+			
+		$.post('clogin', {
+			"usuario": usuario,
+			"pass": pass,
+			"action": "login"
+		}, function(data){
+			if (fn.after != undefined)
+				fn.after(data);
+				
+			if (data.band == 'false'){
+				console.log("Los datos del usuario no son válidos");
+			}
+		}, "json");
 	}
 	
 	this.sendUbicacion = function(){
@@ -64,8 +77,9 @@ TUsuario = function(){
 	};
 	
 	this.getUsersJoomla = function(){
-		$.post(
-				'?mod=cusuario&action=usuariosJoomla', {},
+		$.post('cusuario', {
+					"action": "usuariosJoomla"
+				},
 				function(result){
 				},
 				"json"

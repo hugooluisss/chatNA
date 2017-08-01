@@ -13,8 +13,8 @@ switch($objModulo->getId()){
 					echo json_encode(array("band" => "false"));
 			break;
 			case 'sendUbicacion':
-				global $objUserGeneral;
-				$objUserGeneral->setPosicion($_POST['latitud'], $_POST['longitud']);
+				global $userSesion;
+				$userSesion->setPosicion($_POST['latitud'], $_POST['longitud']);
 				
 				echo json_encode(array("band" => "true"));
 			break;
@@ -53,31 +53,35 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		
 		$s = $_POST['ultimo'] <> ''?(" and idMensaje > ".$_POST['ultimo']):'';
-		$rs = $db->Execute("select * from mensaje where idEvento = ".$_POST["id"]." ".($_GET['coordinador'] == 's'?"and coordinador = 'S'":"").$s." order by hora asc;");
+		$sql = "select * from mensaje where idEvento = ".$_POST["id"]." ".($_GET['coordinador'] == 's'?"and coordinador = 'S'":"").$s." order by hora asc;";
+		
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
 		$datos = array();
 		$obj = new TMensaje();
-		while(!$rs->EOF){
-			$obj->setId($rs->fields['idMensaje']);
+		while($row = $rs->fetch_assoc()){
+			$obj->setId($row['idMensaje']);
 			
 			$el = array();
 			$el["texto"] = $obj->getTexto();
-			$el["idMensaje"] = $rs->fields['idMensaje'];
+			$el["idMensaje"] = $row['idMensaje'];
 			$el["hora"] = $obj->getHora();
 			$el["from"] = $obj->usuario->getNombre();
 			$el["coordinador"] = $obj->isShowCoordinador();
 			$el["json"] = json_encode($el);
 			array_push($datos, $el);
-			
-			$rs->moveNext();
 		}
 		
 		echo json_encode(array("band" => true, "mensajes" => $datos));		 
 	break;
-	case 'panel': case 'coordinador':
+	case 'panelPrincipal': case 'coordinador':
 		$db = TBase::conectaDB();
-		$rs = $db->Execute("select idEvento from evento where estado = 'A' order by fecha desc");
 		
-		$evento = new TEvento($rs->fields['idEvento']);
+		$sql = "select idEvento from evento where estado = 'A' order by fecha desc";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		$row = $rs->fetch_assoc();
+		$evento = new TEvento($row['idEvento']);
 		$objEvento = array();
 		$objEvento['nombre'] = $evento->getNombre();
 		$objEvento['descripcion'] = $evento->getDescripcion();
@@ -85,11 +89,12 @@ switch($objModulo->getId()){
 		$smarty->assign("evento", $objEvento);
 		
 		if ($evento->getId() <> ''){
-		    $rs = $db->Execute("select * from medio a join eventomedio using(idMedio) where idEvento = ". $evento->getId());
+		    $sql = "select * from medio a join eventomedio using(idMedio) where idEvento = ". $evento->getId();
+		    $rs = $db->query($sql) or errorMySQL($db, $sql);
+		    
 		    $datos = array();
-		    while(!$rs->EOF){
-		    	array_push($datos, $rs->fields);
-	    		$rs->moveNext();
+		    while($row = $rs->fetch_assoc()){
+		    	array_push($datos, $row);
 	    	}
 		
 	    	$smarty->assign("medios", $datos);
