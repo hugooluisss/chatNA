@@ -11,7 +11,8 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}bootstrap.css">
 			<link type="text/css" rel="stylesheet" href="{$PAGE.css}jquery.dataTables.min.css" />
-			<link type="text/css" rel="stylesheet/less" href="{$PAGE.css}theme.less">
+			<!--<link type="text/css" rel="stylesheet/less" href="{$PAGE.css}theme.less">-->
+			<link type="text/css" rel="stylesheet" href="{$PAGE.css}theme.css">
       </HEAD>
       <BODY>
       		
@@ -58,7 +59,7 @@
 		<script type="text/javascript" src="{$PAGE.ruta}js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" src="{$PAGE.ruta}js/ui/jquery-ui.js"></script>
 			
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+	    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>-->
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFa9dJnYA73gbJSdoery99NTOzUgbdL3w"></script>
 	    
 	    <script type="text/javascript" src="{$PAGE.ruta}js/eventos.js"></script>

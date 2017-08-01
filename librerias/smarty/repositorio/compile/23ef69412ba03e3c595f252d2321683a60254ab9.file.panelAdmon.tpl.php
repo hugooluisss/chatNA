@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-05 01:40:50
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-09 18:10:35
          compiled from "templates/plantillas/modulos/usuarios/panelAdmon.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11806687325581930054fea8-90565825%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '23ef69412ba03e3c595f252d2321683a60254ab9' => 
     array (
       0 => 'templates/plantillas/modulos/usuarios/panelAdmon.tpl',
-      1 => 1436074320,
+      1 => 1443832748,
       2 => 'file',
     ),
   ),
@@ -86,6 +86,7 @@ $_smarty_tpl->tpl_vars['tipo']->_loop = true;
 <div class="btn-toolbar" role="toolbar">
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" id="btnAgregar">Agregar</button>
+		<button type="button" class="btn btn-default" id="btnJoomlaUsers">Agregar desde Joomla</button>
 	</div>
 </div>
 <br />

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2015-07-05 01:40:50
+<?php /* Smarty version Smarty-3.1.11, created on 2015-10-04 09:30:34
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86087753755784df4f34a24-17731746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1436074932,
+      1 => 1443969033,
       2 => 'file',
     ),
   ),
@@ -41,8 +41,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 bootstrap.css">
 			<link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
 jquery.dataTables.min.css" />
-			<link type="text/css" rel="stylesheet/less" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
-theme.less">
+			<!--<link type="text/css" rel="stylesheet/less" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
+theme.less">-->
+			<link type="text/css" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['css'];?>
+theme.css">
       </HEAD>
       <BODY>
       		
@@ -62,7 +64,7 @@ theme.less">
 	
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='panel'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']==''){?>class="active"<?php }?>><a href="index.php?mod=panel">Inicio</a></li>
+	                <li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='panel'||$_smarty_tpl->tpl_vars['PAGE']->value['modulo']==''){?>class="active"<?php }?>><a href="index.php?mod=setPantallaInicio">Inicio</a></li>
 	                <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['sesionIniciada']){?>
 	                	<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['isAdmin']==true){?>
 			                <li class="dropdown">
@@ -85,7 +87,8 @@ theme.less">
     	<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['PAGE']->value['vista'], $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	    </div>
-	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+js/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 js/bootstrap.js"></script>
 		
@@ -94,7 +97,7 @@ js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 js/ui/jquery-ui.js"></script>
 			
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>
+	    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js" type="text/javascript"></script>-->
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFa9dJnYA73gbJSdoery99NTOzUgbdL3w"></script>
 	    
 	    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>

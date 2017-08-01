@@ -84,14 +84,16 @@ switch($objModulo->getId()){
 		$objEvento['id'] = $evento->getId();
 		$smarty->assign("evento", $objEvento);
 		
-		$rs = $db->Execute("select * from medio a join eventomedio using(idMedio) where idEvento = ". $evento->getId());
-		$datos = array();
-		while(!$rs->EOF){
-			array_push($datos, $rs->fields);
-			$rs->moveNext();
-		}
+		if ($evento->getId() <> ''){
+		    $rs = $db->Execute("select * from medio a join eventomedio using(idMedio) where idEvento = ". $evento->getId());
+		    $datos = array();
+		    while(!$rs->EOF){
+		    	array_push($datos, $rs->fields);
+	    		$rs->moveNext();
+	    	}
 		
-		$smarty->assign("medios", $datos);
+	    	$smarty->assign("medios", $datos);
+		}
 		global $ini;
 		$smarty->assign("medioDefecto", $ini['sistema']['medioDefecto']);
 	break;

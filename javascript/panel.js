@@ -67,5 +67,5 @@ $(document).ready(function(){
 		obj.getMensajes(undefined, {
 			post: mostrarMensages
 		});
-	}, 5000);
+	}, 20000);
 });
